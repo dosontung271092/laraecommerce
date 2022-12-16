@@ -21,15 +21,17 @@
                     @endif
                   </div>
                   <div class="card-body">
-                     <h5 class="products-grid__name">{{ Str::words($item->name, 100, ' ...') }}</h5>
+                     <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
+                        <h5 class="products-grid__name">{{ Str::words($item->name, 100, ' ...') }}</h5>
+                     </a>
                      <p class="card-text products-grid__description">{{ Str::words($item->description, 20, ' ...') }}</p>
                      <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                            <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
                         </div>
                         <div>
-                           <del class="text-muted">{{ $item->original_price }} VND</del>
-                           <small class="text-muted">{{ $item->selling_price }} VND</small>
+                           <del class="text-muted"><small>{{ $item->original_price }} đ</small></del>
+                           <span class="text-danger">{{ $item->selling_price }} đ</span>
                         </div>
                      </div>
                   </div>
