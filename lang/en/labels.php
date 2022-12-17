@@ -20,6 +20,16 @@ return [
     'category-add' => 'Add category',
     'category-edit' => 'Edit category',
 
+    'taxonomy' => 'Taxonomy',
+    'taxonomy-name' => 'Taxonomy name',
+    'taxonomy-add' => 'Add taxonomy',
+    'taxonomy-edit' => 'Edit taxonomy',
+
+    'post' => 'Post',
+    'post-title' => 'Post title',
+    'post-add' => 'Add post',
+    'post-edit' => 'Edit post',
+
     'brand' => 'Brand',
     'brand-name' => 'Brand name',
     'brand-add' => 'Add brand',

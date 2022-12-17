@@ -22,9 +22,9 @@
                   </div>
                   <div class="card-body">
                      <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
-                        <h5 class="products-grid__name">{{ Str::words($item->name, 100, ' ...') }}</h5>
+                        <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
                      </a>
-                     <p class="card-text products-grid__description">{{ Str::words($item->description, 20, ' ...') }}</p>
+                     <p class="card-text products-grid__description">{{ Str::words($item->small_description, 20, ' ...') }}</p>
                      <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                            <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>

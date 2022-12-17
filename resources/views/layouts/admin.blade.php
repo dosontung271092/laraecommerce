@@ -6,7 +6,7 @@
       <meta name="description" content="">
       <meta name="author" content="Do Son Tung">
       <meta name="generator" content="Hugo 0.104.2">
-      <title>Dashboard Bootstrap v5.2</title>
+      <title>Dashboard olympus</title>
 
       <!-- Favicons -->
       <link rel="apple-touch-icon" href="{{ asset('/img/favicons/apple-touch-icon.png') }}" sizes="180x180">

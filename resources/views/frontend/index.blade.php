@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
        <main class="container">
          @include('frontend._partials.menu')

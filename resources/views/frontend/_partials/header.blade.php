@@ -12,7 +12,16 @@
                 <path d="M21 21l-5.2-5.2"/>
                 </svg>
             </a>
-            <a class="btn btn-sm btn-outline-secondary" href="{{ route('login') }}">{{ __('Login') }}</a>
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        <!-- User is logging -->
+                    @else
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    @endauth
+                </div>
+            @endif
+            
         </div>
     </div>
     </header>

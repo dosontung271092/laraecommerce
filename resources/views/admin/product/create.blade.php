@@ -50,8 +50,8 @@
         </div>
         <div class="mb-3 col-12">
             <label>Mô tả</label>
-            <textarea type="text" name="description" class="form-control" rows="10" ></textarea>
-            @error('small_description')
+            <textarea type="text" name="description" class="form-control" rows="10" id="editor"></textarea>
+            @error('description')
             <small class="text-danger">{{$message}}</small>
             @enderror
         </div>
@@ -130,4 +130,14 @@
     </div>
 
 </form>
+@endsection
+@section('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+    <script>
+            ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection

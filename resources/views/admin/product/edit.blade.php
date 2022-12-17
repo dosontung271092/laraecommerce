@@ -51,7 +51,7 @@
          </div>
          <div class="col-12 mb-3">
             <label>Mô tả</label>
-            <textarea type="text" name="description" class="form-control" rows="10">{{ $product->description }}</textarea>
+            <textarea type="text" name="description" class="form-control" rows="10" id="editor">{{ $product->description }}</textarea>
             @error('description')
             <small class="text-danger">{{$message}}</small>
             @enderror
@@ -163,57 +163,12 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
     <script>
-        // $(document).ready(function() {
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         }
-        //     });
-
-        //     $(document).on('click', '.updateProductColorBtn',function(){
-        //         var product_id = "{{ $product->id }}";
-        //         var prod_color_id = $(this).val();
-        //         var qty = $(this).closest('.prod-color-tr').find('.productColorQuantity').val();
-
-        //         if(qty <= 0){
-        //             alert('Quantity is required!');
-        //             return false;
-        //         }
-
-        //         var data = {
-        //             'product_id': product_id,
-        //             'prod_color_id': prod_color_id,
-        //             'qty': qty
-        //         };
-
-
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "/admin/product-color/" + prod_color_id,
-        //             data: data,
-        //             success: function(response){
-        //                 alert(response.message)
-        //             }
-        //         })
-
-        //     });
-
-        //     $(document).on('click', '.deleteProductColorBtn',function(){
-                
-        //         var thisClick = $(this);
-        //         var prod_color_id = thisClick.val();
-                
-        //         $.ajax({
-        //             type: "GET",
-        //             url: "/admin/product-color/" + prod_color_id + "/delete",
-        //             success: function(response){
-        //                 thisClick.closest('.prod-color-tr').remove();
-        //                 alert(response.message)
-        //             }
-        //         })
-
-        //     });
-        // });
+            ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
 @endsection

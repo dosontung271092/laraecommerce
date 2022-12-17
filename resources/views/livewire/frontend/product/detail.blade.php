@@ -14,7 +14,6 @@
       }
 
       .swiper-slide {
-        text-align: center;
         font-size: 18px;
         background: #fff;
 
@@ -45,6 +44,12 @@
 
       .product-detail__img-thumnail .swiper-slide-thumb-active {
         opacity: 1;
+        height: 90px;
+      }
+
+      .product-detail__desc{
+        height: 405px; 
+        overflow-y: scroll;
       }
     </style>
 @endsection
@@ -65,11 +70,11 @@
             </div>
 
             <div class="card mt-3">
-                <div class="card-header">
+                <div class="card-header fw-bold">
                     Mô tả sản phẩm
                 </div>
-                <div class="card-body">
-                    <p class="lead fs-6">{!! $product->description !!}</p>
+                <div class="card-body product-detail__desc">
+                    {!! $product->description !!}
                 </div>
             </div>
         </div>
@@ -134,9 +139,9 @@
                                     </div>
                                     <div class="card-body">
                                         <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
-                                            <h5 class="products-grid__name">{{ Str::words($item->name, 100, ' ...') }}</h5>
+                                            <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
                                         </a>
-                                        <p class="card-text products-grid__description">{{ Str::words($item->description, 20, ' ...') }}</p>
+                                        <p class="card-text products-grid__description">{{ Str::words($item->small_description, 20, ' ...') }}</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                 <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>

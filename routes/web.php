@@ -48,6 +48,24 @@ Route::prefix('admin')->middleware(['auth', 'isAmin'])->group(function (){
         Route::get('/product/{id}/delete', 'delete');
     });
 
+    Route::controller(App\Http\Controllers\Admin\TaxonomyController::class)->group(function () {
+        Route::get('/taxonomy', 'index');
+        Route::get('/taxonomy/create', 'create');
+        Route::post('/taxonomy', 'store');
+        Route::get('/taxonomy/{taxonomy}', 'edit');
+        Route::put('/taxonomy/{taxonomy}', 'update');
+        Route::get('/taxonomy/{id}/delete', 'delete');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\PostController::class)->group(function () {
+        Route::get('/post', 'index');
+        Route::get('/post/create', 'create');
+        Route::post('/post', 'store');
+        Route::get('/post/{post}', 'edit');
+        Route::put('/post/{post}', 'update');
+        Route::get('/post/{id}/delete', 'delete');
+    });
+
     Route::controller(App\Http\Controllers\Admin\ProductImageController::class)->group(function () {
         Route::get('/product-image/{id}', 'delete');
     });
