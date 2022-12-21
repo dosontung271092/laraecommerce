@@ -16,11 +16,20 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function () {
+Route::controller(App\Http\Controllers\Public\HomeController::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('/collections', 'category');
-    Route::get('/collections/{category_slug}', 'product');
-    Route::get('/collections/{category_slug}/{product_slug}', 'detail');
+});
+
+Route::controller(App\Http\Controllers\Public\ProductController::class)->group(function () {
+    Route::get('/product-collection', 'category');
+    Route::get('/product-collection/{category_slug}', 'product');
+    Route::get('/product-collection/{category_slug}/{product_slug}', 'detail');
+});
+
+Route::controller(App\Http\Controllers\Public\PostController::class)->group(function () {
+    Route::get('/post-collection', 'taxonomy');
+    Route::get('/post-collection/{taxonomy_slug}', 'post');
+    Route::get('/post-collection/{taxonomy_slug}/{post_slug}', 'detail');
 });
 
 Route::prefix('admin')->middleware(['auth', 'isAmin'])->group(function (){

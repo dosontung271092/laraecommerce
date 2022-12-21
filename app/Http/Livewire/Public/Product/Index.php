@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend\Product;
+namespace App\Http\Livewire\Public\Product;
 
 use Livewire\Component;
 use App\Models\Product;
@@ -37,7 +37,7 @@ class Index extends Component
                             ->where('status', '0')
                             ->get();
                             
-        return view('livewire.frontend.product.index', [
+        return view('livewire.public.product.index', [
             'products' => $products,
             'category' => $this->category
         ]);

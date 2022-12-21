@@ -57,7 +57,7 @@
     <nav aria-label="breadcrumb" class="my-3 bg-light px-1">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('/collections/'.$category->slug) }}">{{ $product->category ? $product->category->name : 'category' }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/product-collection/'.$category->slug) }}">{{ $product->category ? $product->category->name : 'category' }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
         </ol>
     </nav>
@@ -138,13 +138,13 @@
                                         @endif
                                     </div>
                                     <div class="card-body">
-                                        <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
+                                        <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
                                             <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
                                         </a>
                                         <p class="card-text products-grid__description">{{ Str::words($item->small_description, 20, ' ...') }}</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <a href="{{ url('/collections/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
+                                                <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
                                             </div>
                                             <div>
                                                 <del><small class="text-muted">{{ $item->original_price }} đ</small></del>

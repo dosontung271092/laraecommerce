@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.public')
 @section('content')
     <div class="py-3 py-md-5">
         <div class="container">
@@ -6,10 +6,10 @@
                 <div class="col-md-12">
                     <h4 class="mb-4">Danh mục sản phẩm</h4>
                 </div>
-                @forelse($categories as $item)
+                @forelse($taxonomies as $item)
                     <div class="col-6 col-md-3">
                         <div class="category-card">
-                            <a href="{{ url('/collections/'.$item->slug) }}">
+                            <a href="{{ url('/collection/'.$item->slug) }}">
                                 <div class="category-card-img">
                                     <img src="{{ asset($item->image) }}" class="w-100" alt="Hình sản phẩm">
                                 </div>
@@ -21,7 +21,7 @@
                     </div>
                 @empty
                     <div class="col-md-12">
-                        <h5>No categories available</h5>
+                        <h5>No taxonomies available</h5>
                     </div>
                 @endforelse
             </div>

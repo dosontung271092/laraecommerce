@@ -2,7 +2,7 @@
     <nav class="nav d-flex justify-content-between">
         @foreach($categories as $key => $item)
             @if( $key <= 5 )
-                <a class="py-2 link-secondary" href="{{ url('/collections/'.$item->slug) }}">{{ $item->name }}</a>
+                <a class="py-2 link-secondary" href="{{ url('/product-collection/'.$item->slug) }}">{{ $item->name }}</a>
             @endif
         @endforeach
     </nav>

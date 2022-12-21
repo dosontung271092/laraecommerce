@@ -19,9 +19,9 @@
       @yield('style')
    </head>
    <body>
-      @include('frontend._partials.header')
+      @include('public._partials.header')
       @yield('content')
-      @include('frontend._partials.footer')
+      @include('public._partials.footer')
       <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
       <script src="{{ asset('assets/js/jquery-3.6.1.js') }}"></script>
       @yield('script')
