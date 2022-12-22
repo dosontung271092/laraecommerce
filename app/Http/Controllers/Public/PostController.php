@@ -10,11 +10,13 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function taxonomy(){
+
         $taxonomies = Taxonomy::where('status', '0')->get();
         return view('public.post-collection.taxonomy.index', compact('taxonomies'));
     }
 
     public function post( $taxonomy_slug ){
+
         $taxonomy = Taxonomy::where('slug', $taxonomy_slug)->where('status', '0')->first();
         
         if( $taxonomy ){

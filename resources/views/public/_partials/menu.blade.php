@@ -1,9 +1,8 @@
 <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-        @foreach($categories as $key => $item)
-            @if( $key <= 5 )
-                <a class="py-2 link-secondary" href="{{ url('/product-collection/'.$item->slug) }}">{{ $item->name }}</a>
-            @endif
-        @endforeach
+    <nav class="nav d-flex bg-primary">
+        <a class="py-2 mx-3 link-light text-decoration-none link-hover" href="{{ url('/') }}">Trang chủ</a>
+        <a class="py-2 mx-3 link-light text-decoration-none link-hover" href="{{ url('/product-collection/') }}">Danh mục sản phẩm</a>
+        <a class="py-2 mx-3 link-light text-decoration-none link-hover" href="{{ url('/post-collection/') }}">Bài viết</a>
+        <a class="py-2 mx-3 link-light text-decoration-none link-hover" href="{{ url('/post-collection/') }}">Về chúng tôi</a>
     </nav>
 </div>

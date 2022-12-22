@@ -53,8 +53,7 @@
       }
     </style>
 @endsection
-<main class="container">
-    <nav aria-label="breadcrumb" class="my-3 bg-light px-1">
+<nav aria-label="breadcrumb" class="my-3 bg-light px-1">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ url('/product-collection/'.$category->slug) }}">{{ $product->category ? $product->category->name : 'category' }}</a></li>
@@ -118,54 +117,48 @@
 
         </div>
     </div>
-</main>
 
-<div class="album py-5 bg-light">
-      <div class="container">
-            <!-- Swiper -->
-            <div class="product-detail__list-product">
-                <h3>Các sản phẩm khác</h3>
-                <div class="swiper mySwiper mt-4">
-                    <div class="swiper-wrapper">
-                        @forelse($products as $item)
-                            <div class="swiper-slide">
-                                <div class="card shadow-sm w-100">
-                                    <div class="text-center mt-3 products-grid__image">
-                                        @if( $item->productImages )
-                                            <img src="{{ asset($item->productImages[0]->image) }}" alt="{{ $item->name }}">
-                                        @else
-                                            <h5>No Image</h5>
-                                        @endif
+    <!-- Swiper -->
+    <div class="album py-5 product-detail__list-product">
+        <h3>Các sản phẩm khác</h3>
+        <div class="swiper mySwiper mt-4">
+            <div class="swiper-wrapper">
+                @forelse($products as $item)
+                    <div class="swiper-slide">
+                        <div class="card shadow-sm w-100">
+                            <div class="text-center mt-3 products-grid__image">
+                                @if( $item->productImages )
+                                    <img src="{{ asset($item->productImages[0]->image) }}" alt="{{ $item->name }}">
+                                @else
+                                    <h5>No Image</h5>
+                                @endif
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
+                                    <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
+                                </a>
+                                <p class="card-text products-grid__description">{{ Str::words($item->small_description, 20, ' ...') }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
                                     </div>
-                                    <div class="card-body">
-                                        <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
-                                            <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
-                                        </a>
-                                        <p class="card-text products-grid__description">{{ Str::words($item->small_description, 20, ' ...') }}</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
-                                            </div>
-                                            <div>
-                                                <del><small class="text-muted">{{ $item->original_price }} đ</small></del>
-                                                <span class="text-danger">{{ $item->selling_price }} đ</span>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <del><small class="text-muted">{{ $item->original_price }} đ</small></del>
+                                        <span class="text-danger">{{ $item->selling_price }} đ</span>
                                     </div>
                                 </div>
                             </div>
-                        @empty
-                            <div class="swiper-slide bg-primary">
-                                <h5>No products available</h5>
-                            </div>
-                        @endforelse
+                        </div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+                @empty
+                    <div class="swiper-slide bg-primary">
+                        <h5>No products available</h5>
+                    </div>
+                @endforelse
             </div>
-            
-      </div>
-</div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
 @section('script')
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

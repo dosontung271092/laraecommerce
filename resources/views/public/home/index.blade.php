@@ -35,16 +35,15 @@
     </style>
 @endsection
 @section('content')
-       <main class="container">
-         @include('public._partials.menu')
+
          @include('public._partials.slider')
          <!-- Post featured -->
          <div class="album ">
             <!-- Swiper -->
             <div class="product-detail__list-product">
-               <h3 class="fst-italic text-muted">
+               <h4 class="fst-italic text-muted">
                   Các sản phẩm nổi bật
-               </h3>
+               </h4>
                <div class="swiper mySwiper mt-4">
                   <div class="swiper-wrapper">
                         @forelse($products as $item)
@@ -88,9 +87,9 @@
 
          <div class="row g-5 mt-3">
             <div class="col-md-8">
-               <h3 class="pb-4 mb-4 fst-italic border-bottom text-muted">
+               <h4 class="pb-4 mb-4 fst-italic border-bottom text-muted">
                   Bài viết mới nhất
-               </h3>
+               </h4>
                <article class="blog-post">
                   <h2 class="blog-post-title mb-1">{{ $post->title }}</h2>
                   <p class="blog-post-meta">{{ $post->created_at }}</p>
@@ -99,36 +98,9 @@
                   </div>
                </article>
             </div>
-
-            <!-- right -->
-            <div class="col-md-4">
-               <div class="position-sticky" style="top: 2rem;">
-                  <div class="p-4 bg-light rounded mb-3">
-                     <h4 class="fst-italic">Danh mục bài viết</h4>
-                     <ol class="list-unstyled mb-0">
-                        @foreach($taxonomies as $key => $item)
-                           <li>
-                              <a class="py-2 text-decoration-none fst-italic" href="{{ url('/post-collection/'.$item->slug) }}">{{ $item->name }}</a>
-                           </li>
-                        @endforeach
-                     </ol>
-                  </div>
-
-                  <div class="p-4 bg-light rounded mb-3">
-                     <h4 class="fst-italic">Danh mục sản phẩm</h4>
-                     <ol class="list-unstyled mb-0">
-                        @foreach($categories as $key => $item)
-                           <li>
-                              <a class="py-2 text-decoration-none fst-italic" href="{{ url('/product-collection/'.$item->slug) }}">{{ $item->name }}</a>
-                           </li>
-                        @endforeach
-                     </ol>
-                  </div>
-               </div>
-            </div>
-            <!-- End right -->
+            @include('public._partials.right')
          </div>
-      </main>
+      
 @endsection
 @section('script')
     <!-- Swiper JS -->

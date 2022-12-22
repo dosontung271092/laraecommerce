@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Public\Post;
 
 use Livewire\Component;
+use App\Models\Taxonomy;
+use App\Models\Category;
 
 class Detail extends Component
 {
@@ -17,10 +19,15 @@ class Detail extends Component
 
     public function render()
     {
+        $categories = Category::where('status', '0')->take(env('PAGINATION_PER_PAGE'))->get();
+        $taxonomies = Taxonomy::where('status', '0')->take(env('PAGINATION_PER_PAGE'))->get();
+
         return view('livewire.public.post.detail', [
             'taxonomy' => $this->taxonomy,
             'posts' => $this->posts,
-            'post' => $this->post
+            'post' => $this->post,
+            'taxonomies' => $taxonomies,
+            'categories' => $categories
         ]);
     }
 }

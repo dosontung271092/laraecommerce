@@ -20,7 +20,11 @@
    </head>
    <body>
       @include('public._partials.header')
-      @yield('content')
+      <main class="container">
+         @include('public._partials.menu')
+         @yield('content')
+      </main>
+
       @include('public._partials.footer')
       <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
       <script src="{{ asset('assets/js/jquery-3.6.1.js') }}"></script>
