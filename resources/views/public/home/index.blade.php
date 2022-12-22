@@ -41,9 +41,9 @@
          <div class="album ">
             <!-- Swiper -->
             <div class="product-detail__list-product">
-               <h4 class="fst-italic text-muted">
+               <h5 class="fst-italic text-muted">
                   Các sản phẩm nổi bật
-               </h4>
+               </h5>
                <div class="swiper mySwiper mt-4">
                   <div class="swiper-wrapper">
                         @forelse($products as $item)
@@ -87,9 +87,9 @@
 
          <div class="row g-5 mt-3">
             <div class="col-md-8">
-               <h4 class="pb-4 mb-4 fst-italic border-bottom text-muted">
+               <h5 class="pb-4 mb-4 fst-italic border-bottom text-muted">
                   Bài viết mới nhất
-               </h4>
+               </h5>
                <article class="blog-post">
                   <h2 class="blog-post-title mb-1">{{ $post->title }}</h2>
                   <p class="blog-post-meta">{{ $post->created_at }}</p>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Taxonomy;
 
 class Post extends Model
 {
@@ -21,5 +22,9 @@ class Post extends Model
         'meta_description',
         'status'
     ];
+
+    public function taxonomy(){
+        return $this->belongsTo(Taxonomy::class, 'taxonomy_id', 'id');
+    }
 
 }

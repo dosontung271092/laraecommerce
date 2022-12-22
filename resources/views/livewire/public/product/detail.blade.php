@@ -53,7 +53,7 @@
       }
     </style>
 @endsection
-<nav aria-label="breadcrumb" class="my-3 bg-light px-1">
+    <nav aria-label="breadcrumb" class="my-3 bg-light px-1">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ url('/product-collection/'.$category->slug) }}">{{ $product->category ? $product->category->name : 'category' }}</a></li>

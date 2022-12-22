@@ -2,7 +2,7 @@
 <div class="col-md-4">
     <div class="position-sticky" style="top: 2rem;">
         <div class="p-3 bg-light rounded mb-3">
-            <h4 class="fst-italic">Danh mục bài viết</h4>
+            <h5 class="fst-italic">Danh mục bài viết</h5>
             <ol class="list-unstyled mb-0">
             @foreach($taxonomies as $key => $item)
                 <li>
@@ -13,7 +13,7 @@
         </div>
 
         <div class="p-3 bg-light rounded mb-3">
-            <h4 class="fst-italic">Danh mục sản phẩm</h4>
+            <h5 class="fst-italic">Danh mục sản phẩm</h5>
             <ol class="list-unstyled mb-0">
             @foreach($categories as $key => $item)
                 <li>
