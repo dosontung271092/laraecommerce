@@ -14,6 +14,12 @@
       <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
       <link href="{{ asset('/css/app/app.css') }}" rel="stylesheet">
       @yield('style')
+      <style>
+         footer{
+            position: relative;
+            bottom: 0;
+         }
+      </style>
    </head>
    <body>
       @include('public._partials.header')

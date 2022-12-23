@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::controller(App\Http\Controllers\Public\HomeController::class)->group(function () {
     Route::get('/', 'index');
+    Route::get('/search', 'search');
 });
 
 Route::controller(App\Http\Controllers\Public\ProductController::class)->group(function () {

@@ -8,8 +8,9 @@
 <div class="album">
     <div class="row">
         <div class="col-8">
+            <h1>{{ $post->title }}</h1>
             {!! $post->content !!}
         </div>
         @include('public._partials.right')
-        </div>
+    </div>
 </div>

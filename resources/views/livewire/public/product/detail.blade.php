@@ -1,11 +1,9 @@
 @section('style')
-    <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
 
-    <!-- Demo styles -->
     <style>
       .product-detail__img .swiper-slide img {
         display: block;
@@ -16,8 +14,6 @@
       .swiper-slide {
         font-size: 18px;
         background: #fff;
-
-        /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;

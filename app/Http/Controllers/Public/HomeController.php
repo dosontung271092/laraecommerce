@@ -20,4 +20,18 @@ class HomeController extends Controller
         $products = Product::where('status', '0')->where('trending', 1)->get();
         return view('public.home.index', compact('sliders', 'categories', 'post', 'taxonomies', 'products'));
     }
+
+    public function search(Request $request){
+        if( $request->keyword ){
+            $keyword = $request->keyword;
+
+            $categories = Category::where('status', '0')->take(env('NUMBER_CATEGORY_ITEM_RIGHT'))->get();
+            $taxonomies = Taxonomy::where('status', '0')->take(env('NUMBER_CATEGORY_ITEM_RIGHT'))->get();
+    
+            $products = Product::where('status', '0')->where('name', 'LIKE', '%'.$keyword.'%')->get();
+            return view('public.search.index', compact('products', 'categories', 'taxonomies', 'keyword'));
+        }
+
+        return redirect()->back();
+    }
 }

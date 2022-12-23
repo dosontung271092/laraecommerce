@@ -15,17 +15,17 @@ class Index extends Component
 
     public $post_id;
 
-    public function deletepost($post_id){
+    public function deletePost($post_id){
         $this->post_id = $post_id;
     }
 
-    public function destroypost(){
+    public function destroyPost(){
         $post = Post::find($this->post_id);
         if(File::exists($post->image)){
             File::delete($post->image);
         }
         $post->delete();
-        session()->flash('message', 'Xóa danh mục thành công');
+        session()->flash('message', 'Xóa bài viết thành công');
         $this->dispatchBrowserEvent('close-modal');
     }
     

@@ -11,9 +11,9 @@
                 <img src="{{ $item->image }}" class="d-block w-100" alt="...">
                 <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1>{!! $item->title !!}</h1>
+                    <!-- <h1>{!! $item->title !!}</h1>
                     <p>{!! $item->description !!}</p>
-                    <btn class="btn-slider" href="#">Xem chi tiết</btn>
+                    <btn class="btn-slider" href="#">Xem chi tiết</btn> -->
                 </div>
                 </div>
             </div>
