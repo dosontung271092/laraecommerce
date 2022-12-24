@@ -26,11 +26,14 @@
       <div class="mb-3 col-6">
             <label>Taxonomy</label>
             <select name="taxonomy_id" class="form-control">
-               <option>--Select Taxonomy--</option>   
+               <option value="">-- {{ __('labels.taxonomy-select') }} --</option>   
                 @foreach($taxonomies as $taxonomy)
                   <option value="{{ $taxonomy->id }}">{{ $taxonomy->name }}</option>
                 @endforeach
             </select>
+            @error('taxonomy_id')
+            <small class="text-danger">{{$message}}</small>
+            @enderror
       </div>
       <div class="col-md-6 mb-3">
          <label>Trạng thái</label><br>

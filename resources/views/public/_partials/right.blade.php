@@ -6,7 +6,7 @@
             <ol class="list-unstyled mb-0">
             @foreach($taxonomies as $key => $item)
                 <li>
-                    <a class="py-2 text-decoration-none fst-italic link-hover" href="{{ url('/post-collection/'.$item->slug) }}">{{ $item->name }}</a>
+                    <a class="py-2 text-decoration-none fst-italic link-hover text-primary" href="{{ url('/post-collection/'.$item->slug) }}">{{ $item->name }}</a>
                 </li>
             @endforeach
             </ol>
@@ -17,7 +17,7 @@
             <ol class="list-unstyled mb-0">
             @foreach($categories as $key => $item)
                 <li>
-                    <a class="py-2 text-decoration-none fst-italic link-hover" href="{{ url('/product-collection/'.$item->slug) }}">{{ $item->name }}</a>
+                    <a class="py-2 text-decoration-none fst-italic link-hover text-primary" href="{{ url('/product-collection/'.$item->slug) }}">{{ $item->name }}</a>
                 </li>
             @endforeach
             </ol>

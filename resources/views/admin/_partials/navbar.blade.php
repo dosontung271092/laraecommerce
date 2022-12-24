@@ -11,7 +11,7 @@
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-            <span>Product</span>
+            <span>{{ __('labels.product') }}</span>
             <a class="link-secondary" href="{{url('/admin/product/create')}}" aria-label="Add a new product">
             <span data-feather="plus-circle" class="align-text-bottom"></span>
             </a>
@@ -38,7 +38,7 @@
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-            <span>Post</span>
+            <span>{{ __('labels.post') }}</span>
             <a class="link-secondary" href="{{url('/admin/post/create')}}" aria-label="Add a new post">
                 <span data-feather="plus-circle" class="align-text-bottom"></span>
             </a>
@@ -48,19 +48,19 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/admin/taxonomy')}}">
                     <span data-feather="users" class="align-text-bottom"></span>
-                    Taxonomy
+                    {{ __('labels.taxonomy') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/admin/post')}}">
                     <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                    Post
+                    {{ __('labels.post') }}
                 </a>
             </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-            <span>Configuration</span>
+            <span>{{ __('labels.configuration') }}</span>
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">

@@ -38,13 +38,13 @@
 
          @include('public._partials.slider')
          <!-- Post featured -->
-         <div class="album ">
+         <div class="album mt-4">
             <!-- Swiper -->
             <div class="product-detail__list-product">
-               <h5 class="fst-italic text-muted">
+               <h3 class="fs-5 fw-bold text-muted fst-italic">
                   Các sản phẩm nổi bật
-               </h5>
-               <div class="swiper mySwiper mt-4">
+               </h3>
+               <div class="swiper mySwiper">
                   <div class="swiper-wrapper">
                         @forelse($products as $item)
                            <div class="swiper-slide">
@@ -85,11 +85,11 @@
          </div>
          <!-- End post featured -->
 
-         <div class="row g-5 mt-3">
+         <div class="row gx-5 mt-4">
             <div class="col-md-8">
-               <h5 class="pb-4 mb-4 fst-italic border-bottom text-muted">
+               <h3 class="fs-5 fw-bold text-muted fst-italic">
                   Bài viết mới nhất
-               </h5>
+               </h3>
                <article class="blog-post">
                   <h2 class="blog-post-title mb-1">{{ $post->title }}</h2>
                   <p class="blog-post-meta">{{ $post->created_at }}</p>
@@ -111,6 +111,24 @@
       var swiper = new Swiper(".product-detail__list-product .swiper", {
         slidesPerView: 4,
         spaceBetween: 10,
+        breakpoints: {
+          "@0.00": {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          "@0.75": {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          "@1.00": {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          "@1.50": {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+        }
       });
     </script>
 @endsection
