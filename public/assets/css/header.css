@@ -65,7 +65,7 @@
     cursor: pointer;
 }
 
-.header-top__li--separate::before{
+.header-top__li--separate::after{
     content: "|";
     margin: 0 18px;
     color: var(--border-color);
@@ -116,8 +116,6 @@
 }
 
 .header-middle-right__item--myaccount{
-    border-right: 1px solid var(--border-color);
-    padding-right: 15px;
     height: 30px;
 }
 

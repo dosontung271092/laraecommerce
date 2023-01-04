@@ -14,11 +14,11 @@ class HomeController extends Controller
 {
     public function index(){
         $sliders = Slider::where('status', '0')->get();
-        $categories = Category::where('status', '0')->take(env('NUMBER_CATEGORY_ITEM_RIGHT'))->get();
+        
         $taxonomies = Taxonomy::where('status', '0')->take(env('NUMBER_CATEGORY_ITEM_RIGHT'))->get();
         $post = Post::where('status', '0')->orderBy('id', 'DESC')->first();
         $products = Product::where('status', '0')->where('trending', 1)->get();
-        return view('public.home.index', compact('sliders', 'categories', 'post', 'taxonomies', 'products'));
+        return view('public.home.index', compact('sliders', 'post', 'taxonomies', 'products'));
     }
 
     public function search(Request $request){
