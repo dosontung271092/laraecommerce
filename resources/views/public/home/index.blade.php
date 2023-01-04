@@ -1,134 +1,429 @@
 @extends('layouts.public')
-@section('style')
-    <!-- Link Swiper's CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    />
-
-    <!-- Demo styles -->
-    <style>
-      .product-detail__img .swiper-slide img {
-        display: block;
-        width: 100%; 
-        object-fit: cover;
-      }
-
-      .swiper-slide {
-        font-size: 18px;
-        background: #fff;
-
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-         align-items: center;
-      }
-    </style>
-@endsection
 @section('content')
-
-         @include('public._partials.slider')
-         <!-- Post featured -->
-         <div class="album mt-4">
-            <!-- Swiper -->
-            <div class="product-detail__list-product">
-               <h3 class="fs-5 fw-bold text-muted fst-italic">
-                  Các sản phẩm nổi bật
-               </h3>
-               <div class="swiper mySwiper">
-                  <div class="swiper-wrapper">
-                        @forelse($products as $item)
-                           <div class="swiper-slide">
-                              <div class="card shadow-sm w-100">
-                                    <div class="text-center mt-3 products-grid__image">
-                                       @if( $item->productImages )
-                                          <img src="{{ asset($item->productImages[0]->image) }}" alt="{{ $item->name }}">
-                                       @else
-                                          <h5>No Image</h5>
-                                       @endif
-                                    </div>
-                                    <div class="card-body">
-                                       <a href="{{ url('/product-collection/'.$item->category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
-                                          <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
-                                       </a>
-                                       <p class="card-text products-grid__description">{{ Str::words($item->small_description, 20, ' ...') }}</p>
-                                       <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                                <a href="{{ url('/product-collection/'.$item->category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
-                                          </div>
-                                          <div>
-                                                <del><small class="text-muted">{{ $item->original_price }} đ</small></del>
-                                                <span class="text-danger">{{ $item->selling_price }} đ</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                              </div>
-                           </div>
-                        @empty
-                           <div class="swiper-slide bg-primary">
-                              <h5>No products available</h5>
-                           </div>
-                        @endforelse
-                  </div>
-                  <div class="swiper-pagination"></div>
-               </div>
+<div class="page-width">
+    <section class="slider__section">
+        <div class="slider__main swiper">
+            <div class="swiper-wrapper">
+                @foreach($sliders as $key => $item)
+                    <div class="swiper-slide slider-main__item">
+                        <img class="slider-main__img" src="{{ $item->image }}">
+                        <div class="slider-main__content">
+                            <p class="slider-main__sale">Sale 50%</p>
+                            <h3 class="slider-main__title">
+                                {{ $item->title }}
+                            </h3>
+                            <p class="slider-main__description">{{ $item->description }}</p>
+                            <button class="slider-main__viewbtn">
+                                xem chi tiết
+                            </button>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-         </div>
-         <!-- End post featured -->
+            <div class="swiper-pagination"></div>
+        </div>
 
-         <div class="row gx-5 mt-4">
-            <div class="col-md-8">
-               <h3 class="fs-5 fw-bold text-muted fst-italic">
-                  Bài viết mới nhất
-               </h3>
-               <article class="blog-post">
-                  <h2 class="blog-post-title mb-1">{{ $post->title }}</h2>
-                  <p class="blog-post-meta">{{ $post->created_at }}</p>
-                  <div>
-                     {!! $post->content !!}
-                  </div>
-               </article>
+        <div class="slider__next">
+            <div class="slider-next__item">
+                <img class="slider-next__img" src="./assets/img/slide/slide01.jpg">
+                <div class="slider-next__content">
+                    <p class="slider-next__sale">Sale 50%</p>
+                    <h3 class="slider-next__title">
+                        Chăm sóc da tự nhiên
+                    </h3>
+                    <button class="slider-next__viewbtn">
+                        xem chi tiết
+                    </button>
+                </div>
             </div>
-            @include('public._partials.right')
-         </div>
-      
-@endsection
-@section('script')
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+            <div class="slider-next__item">
+                <img class="slider-next__img" src="./assets/img/slide/slide01.jpg">
+                <div class="slider-next__content">
+                    <p class="slider-next__sale">Sale 50%</p>
+                    <h3 class="slider-next__title">
+                        Chăm sóc da tự nhiên
+                    </h3>
+                    <button class="slider-next__viewbtn">
+                        xem chi tiết
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".product-detail__list-product .swiper", {
-        slidesPerView: 4,
-        spaceBetween: 10,
-        breakpoints: {
-          "@0.00": {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          "@0.75": {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          "@1.00": {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          "@1.50": {
-            slidesPerView: 4,
-            spaceBetween: 10,
-          },
-        }
-      });
-    </script>
+    </section> <!-- End slider -->
+
+    <section class="brand__section">
+        <div class="brand__latest swiper">
+            <div class="swiper-wrapper brand-row__wrapper">
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/slide/slide01.jpg">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide brand-row__item">
+                    <div class="brand-row__content">
+                        <div class="brand-row__thumnail">
+                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section> <!-- End brand -->
+
+    <section class="product__section">
+        <div class="product__latest swiper">
+            <div class="product-row__header">
+                <h3 class="product-row-header__title">
+                    Sản phẩm mới nhất
+                </h3>  
+                <div class="product-row-header__navigation">
+                    <img src="./assets/img/icon/previous.png" class="product-row-header__btn product-row-header__btn--next">
+                    <img src="./assets/img/icon/next.png" class="product-row-header__btn product-row-header__btn--prev">
+                </div>
+            </div>
+        
+            <div class="swiper-wrapper product-row__wrapper">
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/slide/slide01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section> <!-- End product -->
+
+    <section class="banner__section">
+        <div class="banner__item">
+            <img class="banner__img" src="./assets/img/slide/slide01.jpg">
+            <div class="banner__content">
+                <p class="banner__sale">Sale 50%</p>
+                <h3 class="banner__title">
+                    Chăm sóc da tự nhiên
+                </h3>
+                <button class="banner__viewbtn">
+                    xem chi tiết
+                </button>
+            </div>
+        </div>
+        <div class="banner__item">
+            <img class="banner__img" src="./assets/img/slide/slide01.jpg">
+            <div class="banner__content">
+                <p class="banner__sale">Sale 50%</p>
+                <h3 class="banner__title">
+                    Chăm sóc da tự nhiên
+                </h3>
+                <button class="banner__viewbtn">
+                    xem chi tiết
+                </button>
+            </div>
+        </div>
+        <div class="banner__item">
+            <img class="banner__img" src="./assets/img/slide/slide01.jpg">
+            <div class="banner__content">
+                <p class="banner__sale">Sale 50%</p>
+                <h3 class="banner__title">
+                    Chăm sóc da tự nhiên
+                </h3>
+                <button class="banner__viewbtn">
+                    xem chi tiết
+                </button>
+            </div>
+        </div>
+    </section><!-- Best product sale -->
+
+    <section class="post__section">
+        <div class="post__latest swiper">
+            <div class="post-row__header">
+                <h3 class="post-row-header__title">
+                    Bài viết mới nhất
+                </h3>  
+                <div class="post-row-header__navigation">
+                    <img src="./assets/img/icon/previous.png" class="post-row-header__btn post-row-header__btn--next">
+                    <img src="./assets/img/icon/next.png" class="post-row-header__btn post-row-header__btn--prev">
+                </div>
+            </div>
+        
+            <div class="swiper-wrapper post-row__wrapper">
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/slide/slide01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/post/post01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/post/post01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/post/post01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/post/post01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/post/post01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/post/post01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide post-row__item">
+                    <div class="post-row__content">
+                        <div class="post-row__thumnail">
+                            <img class="post-row__img" src="./assets/img/post/post01.jpg">
+                        </div>
+                        <p class="post-row__date">30-12-2022</p>
+                        <h3 class="post-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <p class="post-row__description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <a href="#" class="post-row__viewlink">
+                            xem chi tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section> <!-- End post -->
+</div> <!-- End page-width -->
 @endsection

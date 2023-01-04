@@ -1,24 +1,135 @@
-<div class="container">
-    <header class="blog-header py-4">
-        <div class="row d-md-flex justify-content-between align-items-center">
-            <div class="col-5 d-flex align-items-center ">
-                <img src="{{ asset('img/logos/logo.jpg') }}" width="30">
-                <div class="fs-5 ms-2 text-primary">OLYMPUS</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/home/slider-section.css">
+    <link rel="stylesheet" href="/assets/css/home/banner-section.css">
+    <link rel="stylesheet" href="/assets/css/product-section.css">
+    <link rel="stylesheet" href="/assets/css/home/brand-section.css">
+    <link rel="stylesheet" href="/assets/css/home/post-section.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/modal.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__top">
+                <div class="page-width">
+                    <ul class="header-top__ul">
+                        <li class="header-top__li">
+                            <select class="header-top__select">
+                                <option value="">VND</option>
+                                <option value="">USD</option>
+                            </select>
+                        </li>
+                        <li class="header-top__li">
+                            <select class="header-top__select">
+                                <option value="">VI</option>
+                                <option value="">US</option>
+                                <option value="">UK</option>
+                            </select>
+                        </li>
+                        <li class="header-top__li header-top__li--lg header-top__li--separate">Công ty cổ phần dược mỹ phẩm olympus</li>
+                    </ul>
+    
+                    <ul class="header-top__ul header-top__ul--sm">
+                        <li class="header-top__li">Trạng thái giao hàng</li>
+                        <li class="header-top__li header-top__li--separate">Trung tâm hỗ trợ</li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-7">            
-                <form class="d-flex w-100 border rounded" role="search" action="{{ url('search') }}">
-                    <input class="form-control form-control-sm border-0" type="text" name="keyword" placeholder="Tìm kiếm sản phẩm" value="{{ !empty( $keyword ) ? $keyword : '' }}" aria-label=".form-control-sm example">
-                    <button class="btn btn-sm" type="submit">
-                        <a class="link-secondary" href="#" aria-label="Search">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" role="img" viewBox="0 0 24 24">
-                                <title>Search</title>
-                                <circle cx="10.5" cy="10.5" r="7.5"/>
-                                <path d="M21 21l-5.2-5.2"/>
-                            </svg>
-                        </a>
-                    </button>
-                </form>
+
+            <div class="header__middle page-width">
+                <div class="header-middle__logo">
+                    <img src="./assets/img/olympus-logo.png" class="header-middle-logo__img" alt="logo">
+                </div>
+                <div class="header-middle__search">
+                    <form action="" class="header-middle-search__form">
+                        <input type="text" class="header-middle-search-form__input" placeholder="Tìm kiếm các sản phẩm ...">
+                        <button class="header-middle-search-form__submit">TÌM KIẾM</button>
+                    </form>
+                </div>
+                <div class="header-middle__right">
+                    <div class="header-middle-right__item header-middle-right__item--myaccount header-middle-right__item--xl">
+                        <a href="#" class="header-middle-right__myacount">Tài khoản của tôi</a>
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--sm">
+                        <img class="header-middle-right__icon header-middle-right__icon--search" src="./assets/img/icon/search.png">
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--noxl">
+                        <img class="header-middle-right__icon" src="./assets/img/icon/user.png">
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--cart">
+                        <img class="header-middle-right__icon header-middle-right__icon--cart" src="./assets/img/icon/cart.png">
+                        <span class="header-middle-right-cart__notification">3</span>
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--sm">
+                        <img class="header-middle-right__icon header-middle-right__icon--menu" src="./assets/img/icon/bar.png">
+                    </div>
+                </div>
             </div>
-        </div>
-    </header>
-</div>
+
+            <nav class="header__nav">
+                <div class="page-width">
+                    <div class="header-nav__category">
+                        <button class="header-nav__catbtn" id="header-nav__catbtn">
+                            <img class="header-nav-category__icon" src="./assets/img/icon/category.png">
+                            <span class="header-nav-category__text">Danh mục sản phẩm</span>
+                        </button>
+                    </div>
+                    
+                    <ul class="header-nav__ul header-nav__ul--menu header-nav__ul--lg">
+                        <li class="header-nav__li"><a class="header-nav__a" href="">Trang chủ</a></li>
+                        <li class="header-nav__li"><a class="header-nav__a" href="">Sản phẩm</a></li>
+                        <li class="header-nav__li"><a class="header-nav__a" href="">Tin tức</a></li>
+                        <li class="header-nav__li"><a class="header-nav__a" href="">Giới thiệu</a></li>
+                        <li class="header-nav__li"><a class="header-nav__a" href="">Liên hệ</a></li>
+                    </ul>
+
+                    <ul class="header-nav__ul header-nav__ul--freeship">
+                        <li class="header-nav__li">Free ship với đơn từ <span class="header-nav-ul-freeship__value">100.000 đ +</span></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <header class="header__scroll" id="header__scroll">
+            <div class="header__middle page-width">
+                <div class="header-middle__logo">
+                    <img src="./assets/img/olympus-logo.png" class="header-middle-logo__img" alt="logo">
+                </div>
+                <div class="header-middle__search">
+                    <form action="" class="header-middle-search__form">
+                        <input type="text" class="header-middle-search-form__input" placeholder="Tìm kiếm các sản phẩm ...">
+                        <button class="header-middle-search-form__submit">TÌM KIẾM</button>
+                    </form>
+                </div>
+                <div class="header-middle__right">
+                    <div class="header-middle-right__item header-middle-right__item--myaccount header-middle-right__item--xl">
+                        <a href="#" class="header-middle-right__myacount">Tài khoản của tôi</a>
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--sm">
+                        <img class="header-middle-right__icon header-middle-right__icon--search" src="./assets/img/icon/search.png">
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--noxl">
+                        <img class="header-middle-right__icon" src="./assets/img/icon/user.png">
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--cart">
+                        <img class="header-middle-right__icon header-middle-right__icon--cart" src="./assets/img/icon/cart.png">
+                        <span class="header-middle-right-cart__notification">3</span>
+                    </div>
+                    <div class="header-middle-right__item header-middle-right__item--sm">
+                        <img class="header-middle-right__icon header-middle-right__icon--menu" src="./assets/img/icon/bar.png">
+                    </div>
+                </div>
+            </div>
+        </header>
