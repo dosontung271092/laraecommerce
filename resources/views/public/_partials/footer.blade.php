@@ -2,19 +2,19 @@
     <section class="service__section">
         <div class="service__row">
             <div class="service-row__item service-row__item--separate">
-                <img src="./assets/img/icon/fast-delivery.png" alt="" class="service-row-item__icon">
+                <img src="{{ asset('assets/img/icon/fast-delivery.png') }}" alt="" class="service-row-item__icon">
                 <h3 class="service-row-item__text">Miễn phí vận chuyển</h3>
             </div>
             <div class="service-row__item service-row__item--separate">
-                <img src="./assets/img/icon/percent.png" alt="" class="service-row-item__icon">
+                <img src="{{ asset('assets/img/icon/percent.png') }}" alt="" class="service-row-item__icon">
                 <h3 class="service-row-item__text">khuyến mại lên đến 50%</h3>
             </div>
             <div class="service-row__item service-row__item--separate">
-                <img src="./assets/img/icon/save-money.png" alt="" class="service-row-item__icon">
+                <img src="{{ asset('assets/img/icon/save-money.png') }}" alt="" class="service-row-item__icon">
                 <h3 class="service-row-item__text">Voucher 10%</h3>
             </div>
             <div class="service-row__item">
-                <img src="./assets/img/icon/gift.png" alt="" class="service-row-item__icon">
+                <img src="{{ asset('assets/img/icon/gift.png') }}" alt="" class="service-row-item__icon">
                 <h3 class="service-row-item__text">Tích điểm nhận quà</h3>
             </div>
         </div>
@@ -71,9 +71,9 @@
                 <p>© 2022 - Trang web này được sở hữu và quản lý bởi công ty dược mỹ phẩm Olympus</p>
             </div>
             <div class="footer-below__social">
-                <a href="#" class="footer-below-social__link"><img class="footer-below-social__icon" src="./assets/img/social/facebook.png" alt=""></a>
-                <a href="#" class="footer-below-social__link"><img class="footer-below-social__icon" src="./assets/img/social/youtube.png" alt=""></a>
-                <a href="#" class="footer-below-social__link"><img class="footer-below-social__icon" src="./assets/img/social/gmail.png" alt=""></a>
+                <a href="#" class="footer-below-social__link"><img class="footer-below-social__icon" src="{{ asset('assets/img/social/facebook.png') }}" alt=""></a>
+                <a href="#" class="footer-below-social__link"><img class="footer-below-social__icon" src="{{ asset('assets/img/social/youtube.png') }}" alt=""></a>
+                <a href="#" class="footer-below-social__link"><img class="footer-below-social__icon" src="{{ asset('assets/img/social/gmail.png') }}" alt=""></a>
             </div>
         </div>
     </div>

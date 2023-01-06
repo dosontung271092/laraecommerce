@@ -1,209 +1,214 @@
 @section('style')
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    />
-
-    <style>
-      .product-detail__img .swiper-slide img {
-        display: block;
-        width: 100%; 
-        object-fit: cover;
-      }
-
-      .swiper-slide {
-        font-size: 18px;
-        background: #fff;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-         align-items: center;
-      }
-
-      .product-detail__img-active{
-        height: 450px;
-      }
-
-      .product-detail__img-thumnail .swiper-slide {
-        width: 25%;
-        height: 80px;
-        opacity: 0.3;
-      }
-
-      .product-detail__img-thumnail .swiper-slide-thumb-active {
-        opacity: 1;
-        height: 90px;
-      }
-
-      .product-detail__desc{
-        height: 405px; 
-        overflow-y: scroll;
-      }
-    </style>
+<link rel="stylesheet" href="/assets/css/product-detail.css">
 @endsection
-    <nav aria-label="breadcrumb" class="my-3 bg-light px-1">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('/product-collection/'.$category->slug) }}">{{ $product->category ? $product->category->name : 'category' }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
-        </ol>
-    </nav>
-    <div class="row featurette pb-3">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading fw-normal lh-1">{{ Str::upper($product->name) }}</h2>
-            <div class="mt-1 fs-4">
-                <del class="text-muted"><small>{{ $product->original_price }} đ</small></del>
-                <span class="fw-bold text-danger">{{ $product->selling_price }} đ</span>
-            </div>
 
-            <div class="card mt-3">
-                <div class="card-header fw-bold">
-                    Mô tả sản phẩm
-                </div>
-                <div class="card-body product-detail__desc">
-                    {!! $product->description !!}
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 order-md-1 product-detail__img">
-            <!-- Swiper 1 -->
-            <div
-                style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                class="swiper product-detail__img-active"
-            >
-                <div class="swiper-wrapper">
-                    @if( $product->productImages )
-                        @foreach( $product->productImages as $key => $item )
-                            <div class="swiper-slide border">
-                                <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" height="100%">
-                            </div>
-                        @endforeach
-                    @else
-                        <h3>Không tìm thấy hình ảnh</h3>
-                    @endif
-                </div>
-
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-
-            </div>
-
-            <!-- Swiper 2 -->
-            <div thumbsSlider="" class="swiper product-detail__img-thumnail my-2">
-                <div class="swiper-wrapper">
-                    @if( $product->productImages )
-                        @foreach( $product->productImages as $key => $item )
-                            <div class="swiper-slide border">
-                                <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" height="100%">
-                            </div>
-                        @endforeach
-                    @else
-                        <h3>Không tìm thấy hình ảnh</h3>
-                    @endif
-                </div>
-            </div>
-
-        </div>
+@extends('layouts.public')
+@section('content')
+<div class="breadcrumb">
+    <div class="page-width">
+        <h3 class="breadcumb__title">
+            Chi tiết sản phẩm
+        </h3>
     </div>
+</div>
 
-    <!-- Swiper -->
-    <div class="album py-5 product-detail__list-product">
-        <h3>Các sản phẩm khác</h3>
-        <div class="swiper mySwiper mt-4">
-            <div class="swiper-wrapper">
-                @forelse($products as $item)
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm w-100">
-                            <div class="text-center mt-3 products-grid__image">
-                                @if( $item->productImages )
-                                    <img src="{{ asset($item->productImages[0]->image) }}" alt="{{ $item->name }}">
-                                @else
-                                    <h5>No Image</h5>
-                                @endif
+<div class="page-width">
+    <div class="product__detail">
+        <div class="product-detail__left">
+            <div class="swiper product-detail-left__featuredslide">
+                <div class="swiper-wrapper">
+                    @if( $product->productImages )
+                        @foreach( $product->productImages as $key => $item )
+                            <div class="swiper-slide">
+                                <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" height="100%">
                             </div>
-                            <div class="card-body">
-                                <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="text-dark text-decoration-none">
-                                    <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
-                                </a>
-                                <p class="card-text products-grid__description">{{ Str::words($item->small_description, 20, ' ...') }}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{ url('/product-collection/'.$category->slug.'/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
-                                    </div>
-                                    <div>
-                                        <del><small class="text-muted">{{ $item->original_price }} đ</small></del>
-                                        <span class="text-danger">{{ $item->selling_price }} đ</span>
-                                    </div>
+                        @endforeach
+                    @else
+                        <h3>Không tìm thấy hình ảnh</h3>
+                    @endif
+                </div>
+            </div>
+                <div thumbsSlider="" class="swiper product-detail-left__thumbslide">
+                    <div class="swiper-wrapper">
+                        @if( $product->productImages )
+                            @foreach( $product->productImages as $key => $item )
+                                <div class="swiper-slide">
+                                    <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" height="100%">
                                 </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @else
+                            <h3>Không tìm thấy hình ảnh</h3>
+                        @endif
                     </div>
-                @empty
-                    <div class="swiper-slide bg-primary">
-                        <h5>No products available</h5>
-                    </div>
-                @endforelse
-            </div>
-            <div class="swiper-pagination"></div>
+                </div>
         </div>
+        <div class="product-detail__right">
+            <h1 class="product-detail__title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+            <div class="product-detail__price">
+                <del class="product-detail-price__origin">120.000 đ</del>
+                <span class="product-detail-price__sale">170.000 đ</span>
+            </div>
+            <div class="product-detail__summary">
+                <div class="product-detail-summary__item">Danh mục: Thực phẩm cho trẻ em</div>
+                <div class="product-detail-summary__item">Xuất xứ: Nhập ngoại</div>
+                <div class="product-detail-summary__item">Tình trạng: còn hàng</div>
+                <div class="product-detail-summary__item">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, minima voluptatum corporis id, repellat expedita deleniti voluptatem placeat magni recusandae nostrum excepturi. Eaque, impedit vero! Soluta aliquid debitis qui sint?</div>
+            </div>
+            <div class="product-detail-right__bottom">
+                <button class="product-detail-right-bottom__btn product-detail-right-bottom__btn--view">Xem giỏ hàng</button>
+                <button class="product-detail-right-bottom__btn product-detail-right-bottom__btn--checkout">Mua hàng</button>
+            </div>
+        </div>
+    </div> <!-- End product detail -->
+    <div class="product__description">
+        <h1 class="product-description__title">Mô tả</h1>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, laudantium corporis itaque dolore, ipsum ipsam repudiandae harum reprehenderit nulla obcaecati ullam dignissimos laborum. Dolorem a quam inventore modi autem! Accusantium, nesciunt dolor? Quasi nihil ad suscipit assumenda hic laboriosam commodi voluptatibus exercitationem aspernatur voluptate eveniet quas ipsum dolorum consectetur, qui aperiam debitis ratione, ipsam et voluptates architecto magni aut. Quis sunt provident, accusamus, quaerat, asperiores voluptates voluptas in sed dolorem saepe ut aliquid aliquam. Qui exercitationem aspernatur suscipit dolor voluptatum distinctio similique, laudantium, atque numquam unde incidunt vitae, aliquid reiciendis! Unde similique consequatur modi laboriosam nisi rerum molestias, reiciendis quas amet sapiente nesciunt placeat asperiores quasi ducimus eum eius laudantium ex dolore porro ratione distinctio iure dolorum libero error. Mollitia tempore exercitationem cupiditate laudantium reiciendis molestias asperiores voluptates nostrum quos soluta expedita libero quisquam atque sit, ab omnis laborum incidunt? Repudiandae quae aliquam adipisci minima iusto voluptatem doloribus molestiae asperiores corrupti culpa sapiente labore, ab optio. Iste quas ducimus quam ipsam deleniti consequatur minus eius, autem necessitatibus vitae, fugiat, quos iusto praesentium maxime fuga. Adipisci quisquam excepturi veniam recusandae nobis quas est accusantium minima totam ratione tempora hic officia fugit quae, quidem perspiciatis corporis molestias, illum autem aspernatur dolores aperiam explicabo officiis animi! Consequuntur pariatur eos cupiditate nihil reprehenderit dolor sit repellendus nostrum esse amet maxime adipisci, repudiandae, a laudantium error assumenda veritatis corrupti dolorem nisi! Illum aperiam facere vero porro nihil. Vitae corporis explicabo ea, consequatur accusantium dolorum ratione incidunt atque cupiditate? Labore non, consectetur excepturi adipisci quidem necessitatibus aut sapiente harum aliquam placeat omnis animi rem recusandae magnam saepe iste nulla cum nihil, molestias accusamus fugit. Officiis eum laborum corporis! Officia explicabo, cupiditate amet libero dolorum repellendus aut ab sed facere qui molestias impedit illum laborum, labore vero sequi iste doloribus ex voluptate architecto? Dolorem, iure id. Maxime sequi dolore voluptates porro nisi reiciendis eos exercitationem vel, autem cupiditate alias voluptatibus, magni nihil eveniet soluta nam tempore! Ex tempora eius velit fugit saepe dicta atque officiis mollitia? Voluptatibus rerum debitis, consequuntur libero veritatis dignissimos sapiente omnis officia. Magnam iure et odio ex, optio cumque amet mollitia nobis deserunt asperiores maiores accusantium, nam voluptatibus expedita sunt nemo soluta nihil delectus saepe repellendus id cupiditate quos quis! A alias, deleniti adipisci odit officia eveniet omnis quibusdam nisi dolore natus, totam iure molestiae quam. Accusantium ipsa fugiat repellat voluptates, exercitationem labore minima eaque? Alias accusamus fugiat sit modi dolore quasi culpa architecto soluta doloremque beatae eveniet consequuntur vel tempore non atque nulla mollitia tenetur dolorem, omnis nostrum nemo ipsam dolorum, similique provident? Similique fugiat perspiciatis possimus. Voluptate est aperiam pariatur ratione totam accusamus voluptatum? Corporis saepe laboriosam quos architecto nisi porro vitae accusantium, beatae repellendus dolor excepturi recusandae aliquam voluptas ad placeat magni doloremque illo obcaecati. Laudantium, amet dolores? Architecto deserunt eius eligendi vitae tempora, fugiat tenetur corrupti explicabo officiis autem cupiditate, doloribus nemo excepturi, numquam repellendus illo. Cumque velit nemo dolor modi corrupti? Tempore deleniti quod blanditiis ab, eos amet sequi reiciendis velit, adipisci quasi, saepe ex veniam vel? Possimus illum velit nisi assumenda. Omnis molestias maiores laboriosam consequatur. Numquam debitis laboriosam nobis eum velit error quam recusandae sed nemo, expedita doloremque doloribus ab nam, iste ad fuga dolorum. Nisi necessitatibus commodi veritatis rem vel, cupiditate reprehenderit temporibus aspernatur corporis quisquam minima quibusdam non alias eius neque a nobis magnam delectus fugit similique quam autem est? Ab, omnis provident! Alias, excepturi? Ab temporibus autem magni, eveniet quis pariatur, error iure maiores quam accusantium nihil tenetur doloribus deserunt? Eius perferendis, magni odio sequi quia dignissimos illum voluptas velit. Ab nihil reiciendis iste dolore architecto totam laborum cumque eius ipsa, blanditiis ipsam necessitatibus illo voluptatum, atque minima animi odit eveniet voluptatibus voluptate minus aliquid doloribus sunt? Harum dignissimos sunt eaque nam laborum tempora quod maiores. Ipsam perspiciatis quam possimus a sit, tempora neque aperiam eveniet! Quae, iusto. Modi commodi, voluptate sapiente ratione asperiores ipsa iste necessitatibus sunt error vitae fugiat, veniam fugit rem similique quasi iusto unde sint id saepe ipsam reprehenderit vel quam eveniet sit. Illum nostrum odit numquam id perferendis accusantium cumque nulla illo? Maiores pariatur omnis eligendi porro facilis. Doloremque odit ad quos reprehenderit eveniet dolorum quae esse ducimus at perferendis soluta amet adipisci autem, nostrum maiores, et repellendus magnam facere eum alias quisquam nihil labore quis. Ut veritatis quos illum eius mollitia quas voluptatum tenetur, veniam blanditiis, aliquam commodi eum voluptates minima quam magnam architecto quae voluptatibus? Inventore numquam modi officia? Voluptatem necessitatibus ad sit ut distinctio dolor, eum tempora possimus, culpa animi ex sed aut aliquam eaque veniam iste porro quod sapiente explicabo dolores asperiores numquam! Magni aliquam voluptatum tempora, sapiente impedit sequi neque! Asperiores saepe eveniet molestiae, dolorem at commodi aliquid voluptate? Neque dolorum at in, odio ex quod maiores illum aperiam voluptatum suscipit accusantium, officia distinctio recusandae nesciunt inventore. Maiores porro, temporibus aspernatur consequuntur, est laboriosam accusantium nobis nihil exercitationem eligendi distinctio recusandae tempora dolores ratione qui sequi. Accusantium distinctio odio asperiores illum consequuntur soluta ipsam qui, doloribus beatae corporis rerum error? Nobis sit, expedita reprehenderit aperiam quod voluptate est aliquam temporibus cum ut repellendus exercitationem nihil provident aliquid inventore officiis officia rerum sequi architecto accusamus tempore labore dicta! Itaque, molestiae exercitationem consequuntur, modi illum officiis id possimus facilis adipisci deleniti, omnis alias laudantium qui quisquam ab unde vitae quis aliquam ratione repellat asperiores quibusdam fuga molestias pariatur! Corrupti nisi ab reprehenderit magni sapiente excepturi molestias sequi consequatur animi nobis repellendus, temporibus eum, amet dolorum, ut eveniet. Odit perferendis in vitae quibusdam dolorum? Impedit aliquid ipsa esse eos veritatis autem facilis aliquam inventore aut dolores nulla sit tempore laborum accusantium beatae consequatur officia asperiores dicta commodi dolor, dolore consectetur! Nulla facilis non cumque similique velit, dolores eos eligendi dolor debitis cum, quaerat accusantium fugit excepturi in placeat! Nesciunt quas rem maiores tempore aliquam molestias esse iusto aspernatur fuga quis mollitia tenetur in earum minus culpa voluptatibus quo, placeat assumenda ad itaque perspiciatis, nam ut cum obcaecati. Ex corrupti, neque recusandae voluptate tempore rem, unde vitae hic iure odit provident accusamus, numquam sit molestiae delectus aliquam.</div>
     </div>
-@section('script')
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".product-detail__img-thumnail", {
-        spaceBetween: 6,
-        slidesPerView: 5,
-        freeMode: true,
-        watchSlidesProgress: true,
-      });
-
-      var swiper2 = new Swiper(".product-detail__img-active", {
-        spaceBetween: 10,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        thumbs: {
-          swiper: swiper,
-        },
-      });
-
-      var swiper = new Swiper(".product-detail__list-product .swiper", {
-        slidesPerView: 4,
-        spaceBetween: 10,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        breakpoints: {
-          "@0.00": {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          "@0.75": {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          "@1.00": {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          "@1.50": {
-            slidesPerView: 4,
-            spaceBetween: 10,
-          },
-        }
-      });
-    </script>
+    <section class="product__section">
+        <div class="product__latest swiper">
+            <div class="product-row__header">
+                <h3 class="product-row-header__title">
+                    Các sản phẩm khác
+                </h3>  
+                <div class="product-row-header__navigation">
+                    <img src="./assets/img/icon/previous.png" class="product-row-header__btn product-row-header__btn--next">
+                    <img src="./assets/img/icon/next.png" class="product-row-header__btn product-row-header__btn--prev">
+                </div>
+            </div>
+        
+            <div class="swiper-wrapper product-row__wrapper">
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/slide/slide01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide product-row__item">
+                    <span class="product-row__sale">-16%</span>
+                    <div class="product-row__content">
+                        <div class="product-row__thumnail">
+                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
+                        </div>
+                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
+                        <div class="product-row__price">
+                            <del class="product-row-price__origin">120.000 đ</del>
+                            <span class="product-row-price__sale">170.000 đ</span>
+                        </div>
+                        <button class="product-row__viewbtn">
+                            xem chi tiết
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section> <!-- End product -->
+</div> <!-- End page-width -->
 @endsection

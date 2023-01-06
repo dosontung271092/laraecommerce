@@ -1,42 +1,38 @@
+
 @extends('layouts.public')
+
+@section('style')
+<link rel="stylesheet" href="/assets/css/blog.css">
+@endsection
+
 @section('content')
-<nav aria-label="breadcrumb" class="my-3 bg-light px-1">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Danh mục bài viết</li>
-    </ol>
-</nav>
-<div class="row">
-    <div class="col-md-12 mt-3">
-        <h4 class="mb-4">Danh mục bài viết</h4>
-    </div>
-    @forelse( $taxonomies as $item )
-            <div class="mb-3 col-lg-3 col-md-4" >
-                <div class="card shadow-sm">
-                    <div class="text-center mt-3 products-grid__image">
-                    @if( $item->image )
-                        <img src="{{ asset($item->image) }}" alt="{{ $item->name }}">
-                    @else
-                        <h5>No Image</h5>
-                    @endif
-                    </div>
-                    <div class="card-body">
-                    <a href="{{ url('/post-collection/'.$item->slug) }}" class="text-dark text-decoration-none">
-                        <h5 class="products-grid__name">{{ Str::words($item->name, 10, ' ...') }}</h5>
-                    </a>
-                    <p class="card-text products-grid__description">{{ Str::words($item->description, 20, ' ...') }}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="{{ url('/post-collection/'.$item->slug) }}" class="btn btn-sm btn-outline-secondary">Xem</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-    @empty
-        <div class="col-md-12">
-            <h5>No categories available</h5>
-        </div>
-    @endforelse
+<div class="breadcrumb">
+   <div class="page-width">
+         <h3 class="breadcumb__title">
+            Danh mục bài viết
+         </h3>
+   </div>
 </div>
+<div class="page-width">
+    <div class="blog__grid">
+        <div class="blog-grid__wrapper">
+            @foreach($taxonomies as $taxonomy)
+            <div class="blog-grid__item">
+                <div class="blog-grid__content">
+                    <div class="blog-grid__thumnail">
+                        <img class="blog-grid__img" src="{{ asset($taxonomy->image) }}">
+                    </div>
+                    <p class="blog-grid__date">{{ $taxonomy->created_at }}</p>
+                    <h3 class="blog-grid__title">{{ Str::words($taxonomy->name, 10, ' ...') }}</h3>
+                    <p class="blog-grid__description">{{ Str::words($taxonomy->description, 20, ' ...') }}</p>
+                    <a href="{{ url('/post-collection/'.$taxonomy->slug) }}" class="blog-grid__viewlink">
+                        xem chi tiết
+                    </a>
+                </div>
+                
+            </div>
+            @endforeach
+        </div>
+    </div> <!-- End post -->
+</div> <!-- End page-width -->
 @endsection

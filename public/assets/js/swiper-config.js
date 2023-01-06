@@ -114,14 +114,14 @@ var swiper = new Swiper(".post__latest", {
 });
 
 // Detail
-var swiper = new Swiper(".product__detail .product-detail-left__featuredslide", {
+var swiper = new Swiper(".product__detail .product-detail-left__thumbslide", {
     spaceBetween: 5,
     slidesPerView: 5,
     freeMode: true,
     watchSlidesProgress: true,
 });
 
-var swiper2 = new Swiper(".product__detail .product-detail-left__thumbslide", {
+var swiper2 = new Swiper(".product__detail .product-detail-left__featuredslide", {
     spaceBetween: 5,
     navigation: {
         nextEl: ".swiper-button-next",

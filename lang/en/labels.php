@@ -2,7 +2,7 @@
 
 return [
 
-    'administration' => 'Khu quản trị',
+    'administration' => 'Administration',
     'search' => 'Tìm kiếm',
     'login' => 'Đăng nhập',
     'logout' => 'Đăng xuất',

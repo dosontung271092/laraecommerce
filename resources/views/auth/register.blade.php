@@ -1,77 +1,50 @@
 @extends('layouts.public')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="breadcrumb">
+   <div class="page-width">
+         <h3 class="breadcumb__title">
+            Đăng ký
+         </h3>
+   </div>
+</div>
+<div class="page-width">
+    <form method="POST" action="{{ route('register') }}" class="form__authen">
+        @csrf
+        <div class="form__item">
+            <label class="form-item__label">Tên</label>
+            <input class="form-login__input form-login__input--name" type="text" value="{{ old('name') }}" name="name" placeholder="Nhập tên">
+            @error('name')
+            <div class="form-login__message">{{ $message }}</div>
+            @enderror
         </div>
-    </div>
+
+        <div class="form__item">
+            <label class="form-item__label">Email</label>
+            <input class="form-login__input form-login__input--email" type="email" value="{{ old('email') }}" name="email" placeholder="Nhập email">
+            @error('email')
+            <div class="form-login__message">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form__item">
+            <label class="form-item__label">Mật khẩu</label>
+            <input class="form-login__input form-login__input--password" type="password" value="{{ old('password') }}" name="password" placeholder="Nhập mật khẩu">
+            @error('password')
+            <div class="form-login__message">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form__item">
+            <label class="form-item__label">Xác nhận mật khẩu</label>
+            <input class="form-login__input form-login__input--passwordconfirmation" type="password" name="password_confirmation" placeholder="Nhập lại mật khẩu">
+            @error('password_confirmation')
+            <div class="form-login__message">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form__item">
+            <button class="form-login__btn">Gửi</button>
+        </div>
+    </form>
 </div>
 @endsection

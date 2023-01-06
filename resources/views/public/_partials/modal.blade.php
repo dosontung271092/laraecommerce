@@ -5,12 +5,12 @@
         <div class="modal__header">
             <div class="modal__width">
                 <h3 class="modal__title">Tìm kiếm sản phẩm</h3>
-                <img class="modal__clsicon" src="./assets/img/icon/close.png">
+                <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
             </div>
         </div>
         <div class="modal__body">
             <div class="modal__width">
-                <form action="" class="modal-search__form" action="{{ url('search') }}">
+                <form action="" class="modal-search__form" method="GET" action="{{ url('search') }}">
                     <input type="text" class="modal-search-form__input" placeholder="Nhập thông tin sản phẩm ..." name="keyword">
                     <button class="modal-search-form__submit">TÌM KIẾM</button>
                 </form>
@@ -26,7 +26,7 @@
         <div class="modal__header">
             <div class="modal__width">
                 <h3 class="modal__title">Danh mục sản phẩm</h3>
-                <img class="modal__clsicon" src="./assets/img/icon/close.png">
+                <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
             </div>
         </div>
 
@@ -49,7 +49,7 @@
         <div class="modal__header">
             <div class="modal__width">
                 <h3 class="modal__title">Menu</h3>
-                <img class="modal__clsicon" src="./assets/img/icon/close.png">
+                <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
             </div>
         </div>
         <div class="modal__body">
@@ -72,7 +72,7 @@
         <div class="modal__header">
             <div class="modal__width">
                 <h3 class="modal__title">Giỏ hàng của bạn</h3>
-                <img class="modal__clsicon" src="./assets/img/icon/close.png">
+                <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
             </div>
         </div>
 
@@ -82,7 +82,7 @@
                     <li class="modal-body__li">
                         <a href="" class="modal-body__a modal-body__a--cart">
                             <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
-                            <img class="modal-body-cart__thumnail" src="/assets/img/product/product01.jpg" alt="">
+                            <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
                             <div class="modal-body-cart__content">
                                 <h3 class="modal-body-cart-content__title">Thực phẩm dành cho người già</h3>
                                 <p class="modal-body-cart-content__price">Giá: 240.000 đ</p>
@@ -92,7 +92,7 @@
                     <li class="modal-body__li">
                         <a href="" class="modal-body__a modal-body__a--cart">
                             <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
-                            <img class="modal-body-cart__thumnail" src="/assets/img/product/product01.jpg" alt="">
+                            <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
                             <div class="modal-body-cart__content">
                                 <h3 class="modal-body-cart-content__title">Thực phẩm dành cho người trung tuổi</h3>
                                 <p class="modal-body-cart-content__price">Giá: 240.000 đ</p>
@@ -102,7 +102,7 @@
                     <li class="modal-body__li">
                         <a href="" class="modal-body__a modal-body__a--cart">
                             <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
-                            <img class="modal-body-cart__thumnail" src="/assets/img/product/product01.jpg" alt="">
+                            <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
                             <div class="modal-body-cart__content">
                                 <h3 class="modal-body-cart-content__title">Thực phẩm dành cho trẻ em</h3>
                                 <p class="modal-body-cart-content__price">Giá: 240.000 đ</p>

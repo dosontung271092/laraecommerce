@@ -18,7 +18,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if( !Auth::user()->role_as == '1' ){
-            return redirect('/home')->with('status', 'Bạn không phải là admin nên không có quyền truy cập!');
+            return redirect('/')->with('status', 'Bạn không phải là admin nên không có quyền truy cập!');
         }
         return $next($request);
     }

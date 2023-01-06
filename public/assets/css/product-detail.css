@@ -1,5 +1,5 @@
 .product__detail{
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .product__detail .swiper-slide img {
@@ -11,7 +11,6 @@
 
 .product__detail .swiper {
     width: 100%;
-    height: 300px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -21,24 +20,31 @@
     background-position: center;
 }
 
-.product__detail .product-detail-left__thumbslide {
-    height: 80%;
-    width: 100%;
-}
-
 .product__detail .product-detail-left__featuredslide {
-    height: 20%;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    height: 450px;
+}
+
+
+.product__detail .product-detail-left__thumbslide {
     box-sizing: border-box;
-    padding: 10px 0;
+    margin-top: 10px;
 }
 
-.product__detail .product-detail-left__featuredslide .swiper-slide {
-    width: 25%;
-    height: 65%;
+.product__detail .product-detail-left__thumbslide .swiper-wrapper{
+    height: max-content;
+    box-sizing: border-box;
+}
+
+.product__detail .product-detail-left__thumbslide .swiper-slide {
     opacity: 0.4;
+    max-width: 100%;
+    height: 90px;
+    border: 1px solid var(--border-color);
 }
 
-.product__detail .product-detail-left__featuredslide .swiper-slide-thumb-active {
+.product__detail .product-detail-left__thumbslide .swiper-slide-thumb-active {
     opacity: 1;
 }
 
@@ -50,16 +56,28 @@
 }
 
 .product-detail__right{
-    margin-top: 15px;
+    background-color: var(--background-color);
+    padding: 15px 20px;
 }
 
 .product-detail__title{
     margin: 0;
     font-size: 25px;
+    border-radius: 5px;
 }
 
 .product-detail__price{
     margin-top: 15px;
+}
+
+.product-detail__summary{
+    margin-top: 15px;
+}
+
+.product-detail-summary__item{
+    font-size: 15px;
+    padding: 10px 0;
+    color: var(--text-color);
 }
 
 @media (min-width: 992px) {
@@ -68,18 +86,13 @@
     }
 
     .product-detail__left{
-        width: 45%;
+        width: 40%;
     }
 
     .product-detail__right{
-        width: 55%;
-        padding: 0 30px;
-        margin-top: 0;
+        width: 60%;
+        margin-left: 15px;
     }
-}
-
-.product-detail__shortdesc{
-    font-size: 12px;
 }
 
 .product-detail-price__origin{
@@ -127,4 +140,16 @@
 
 .product-detail-right-bottom__btn--checkout:hover{
     background-color: var(--yellow-hover-color);
+}
+
+.product__description{
+    margin-top: 15px;
+    background-color: var(--background-color);
+    padding: 1px 15px;
+}
+
+.product-description__title{
+    color: var(--title-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
 }

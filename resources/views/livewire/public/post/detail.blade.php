@@ -1,16 +1,20 @@
-<nav aria-label="breadcrumb" class="my-3 bg-light px-1">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ url('/post-collection/'.$taxonomy->slug) }}">{{ $taxonomy ? $taxonomy->name : 'taxonomy' }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
-    </ol>
-</nav>
-<div class="album">
-    <div class="row">
-        <div class="col-8">
-            <h1>{{ $post->title }}</h1>
-            {!! $post->content !!}
-        </div>
-        @include('public._partials.right')
-    </div>
+@section('style')
+<link rel="stylesheet" href="/assets/css/blog.css">
+@endsection
+
+@extends('layouts.public')
+@section('content')
+<div class="breadcrumb">
+   <div class="page-width">
+         <h3 class="breadcumb__title">
+         {{ $post->title }}
+         </h3>
+   </div>
 </div>
+<div class="page-width">
+    <div class="post__detail">
+        <p class="post__date">{{ $post->created_at }}</p>
+        <div class="post__content">{!! $post->content !!}</div>
+    </div> <!-- End post -->
+</div> <!-- End page-width -->
+@endsection

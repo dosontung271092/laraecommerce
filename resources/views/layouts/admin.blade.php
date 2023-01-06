@@ -6,7 +6,7 @@
       <meta name="description" content="">
       <meta name="author" content="Do Son Tung">
       <meta name="generator" content="Hugo 0.104.2">
-      <title>Dashboard Olympus</title>
+      <title>DASHBOARD</title>
 
       <!-- Favicons -->
       <link rel="icon" href="{{ asset('img/logos/logo-removebg.png') }}">

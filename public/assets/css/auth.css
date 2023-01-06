@@ -1,0 +1,46 @@
+.form__authen{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.form__item{
+    font-size: 12px;
+    display: block;
+}
+
+.form-item__label{
+    display: block;
+}
+
+.form-login__message{
+    font-size: 11px;
+    color: var(--red-color);
+}
+
+@media (min-width: 576px) {
+    .form__authen{
+        align-items: start;
+    }
+}
+
+.form-login__input{
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    max-width: 100%;
+    width: 300px;
+    height: 30px;
+}
+
+.form-login__btn{
+    width: 300px;
+    max-width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    cursor: pointer;
+}

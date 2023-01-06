@@ -26,7 +26,11 @@
 .header-top__li{
     display: inline-block;
     color: var(--text-color);
-    font-size: 1.3rem;
+    font-size: 11px;
+}
+
+.header-top__a{
+    color: var(--text-color);
 }
 
 .header-top__li--lg{
@@ -42,6 +46,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .header-top__li{
+        font-size: 12px;
     }
 }
 
@@ -65,7 +75,7 @@
     cursor: pointer;
 }
 
-.header-top__li--separate::after{
+.header-top__li--separate::before{
     content: "|";
     margin: 0 18px;
     color: var(--border-color);
@@ -116,6 +126,8 @@
 }
 
 .header-middle-right__item--myaccount{
+    border-right: 1px solid var(--border-color);
+    padding-right: 15px;
     height: 30px;
 }
 
