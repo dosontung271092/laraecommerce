@@ -106,6 +106,8 @@
     border-radius: 5px;
     text-transform: uppercase;
     font-weight: 600;
+    text-decoration: none;
+    text-align: center;
 }
 
 .product-row__viewbtn:hover{

@@ -130,135 +130,26 @@
             </div>
         
             <div class="swiper-wrapper product-row__wrapper">
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/slide/slide01.jpg">
+                @forelse($products as $item)
+                    <div class="swiper-slide product-row__item">
+                        <span class="product-row__sale">- {{ Price::getSalePercent($item->original_price, $item->selling_price) }} %</span>
+                        <div class="product-row__content">
+                            <div class="product-row__thumnail">
+                                <img class="product-row__img" src="{{ asset($item->productImages[0]->image) }}">
+                            </div>
+                            <h3 class="product-row__title">{{ Str::words($item->name, 10, ' ...') }}</h3>
+                            <div class="product-row__price">
+                                <del class="product-row-price__origin">{{ number_format($item->original_price) }} đ</del>
+                                <span class="product-row-price__sale">{{ number_format($item->selling_price) }} đ</span>
+                            </div>
+                            <a class="product-row__viewbtn" href="{{ url('/product-collection/'.$item->category->slug.'/'.$item->slug) }}">
+                                xem chi tiết
+                            </a>
                         </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
                     </div>
-                    
-                </div>
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide product-row__item">
-                    <span class="product-row__sale">-16%</span>
-                    <div class="product-row__content">
-                        <div class="product-row__thumnail">
-                            <img class="product-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                        <h3 class="product-row__title">Lorem ipsum dolor sit amet.</h3>
-                        <div class="product-row__price">
-                            <del class="product-row-price__origin">120.000 đ</del>
-                            <span class="product-row-price__sale">170.000 đ</span>
-                        </div>
-                        <button class="product-row__viewbtn">
-                            xem chi tiết
-                        </button>
-                    </div>
-                </div>
+                @empty
+                    <h5>No products available</h5>
+                @endforelse
             </div>
             
         </div>
