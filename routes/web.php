@@ -36,6 +36,11 @@ Route::controller(App\Http\Controllers\Public\PostController::class)->group(func
     Route::get('/post-collection/{taxonomy_slug}/{post_slug}', 'detail');
 });
 
+// User login
+Route::middleware(['auth'])->group(function (){
+    
+});
+
 Route::prefix('admin')->middleware(['auth', 'isAmin'])->group(function (){
     
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);

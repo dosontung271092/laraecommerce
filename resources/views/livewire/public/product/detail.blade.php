@@ -52,11 +52,10 @@
                 <div class="product-detail-summary__item">{{ $product->category ? 'Danh mục: '.$product->category->name : '' }}</div>
                 <div class="product-detail-summary__item">{{ $product->brand ? 'Xuất xứ: '.$product->brand->name : '' }}</div>
                 <div class="product-detail-summary__item">Tình trạng: còn hàng</div>
-                <div class="product-detail-summary__item  product-detail-summary__item--description"> {{ $product->small_description ? 'Mô tả ngắn: '.$product->small_description : '' }}</div>
+                <div class="product-detail-summary__item"> {{ $product->small_description ? 'Mô tả ngắn: '.$product->small_description : '' }}</div>
             </div>
             <div class="product-detail-right__bottom">
-                <button class="product-detail-right-bottom__btn product-detail-right-bottom__btn--view">Xem giỏ hàng</button>
-                <button class="product-detail-right-bottom__btn product-detail-right-bottom__btn--checkout">Mua hàng</button>
+                <button class="product-detail-right-bottom__btn product-detail-right-bottom__btn--view" type="button" wire:click="addToCart({{ $product->id }})" >Thêm vào giỏ hàng</button>
             </div>
         </div>
     </div> <!-- End product detail -->
@@ -71,8 +70,8 @@
                     Các sản phẩm khác
                 </h3>  
                 <div class="product-row-header__navigation">
-                    <img src="./assets/img/icon/previous.png" class="product-row-header__btn product-row-header__btn--next">
-                    <img src="./assets/img/icon/next.png" class="product-row-header__btn product-row-header__btn--prev">
+                    <img src="{{ asset('assets/img/icon/previous.png') }}" class="product-row-header__btn product-row-header__btn--next">
+                    <img src="{{ asset('assets/img/icon/next.png') }}" class="product-row-header__btn product-row-header__btn--prev">
                 </div>
             </div>
         

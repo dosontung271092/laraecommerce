@@ -77,15 +77,12 @@
 }
 
 .product-detail-summary__item{
-    font-size: 15px;
-    padding: 10px 0;
+    font-size: 13px;
+    padding: 5px 0;
     color: var(--text-color);
+    line-height: 17px;
 }
 
-.product-detail-summary__item--description{
-    line-height: 17px;
-    font-size: 12px;
-}
 
 @media (min-width: 992px) {
     .product__detail{

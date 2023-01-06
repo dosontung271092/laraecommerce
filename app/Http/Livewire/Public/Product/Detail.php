@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Public\Product;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Detail extends Component
 {
@@ -30,5 +31,17 @@ class Detail extends Component
             'products' => $this->products,
             'product' => $this->product
         ]);
+    }
+
+    function addToCart(int $productId){
+        if( Auth::check() ){
+            if( $this->product->where('id', $productId)->where('status', '0')->exists() ){
+                
+            }else{
+                dd('Product is not exist!');
+            }
+        }else{
+           dd('You are not loggin!');
+        }
     }
 }

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/auth.css') }}">
     @yield('style')
+    @livewireStyles
 </head>
 <body>
     <div class="wrapper">        
@@ -32,6 +33,7 @@
     <script src="{{ asset('/assets/js/swiper-config.js') }}"></script>
     <script src="{{ asset('/assets/js/modal.js') }}"></script>
     <script src="{{ asset('/assets/js/main.js') }}"></script>
+    @livewireScripts
 </body>
 </html>
         
