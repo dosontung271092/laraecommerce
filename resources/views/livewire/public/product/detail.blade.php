@@ -50,7 +50,7 @@
             </div>
             <div class="product-detail__summary">
                 <div class="product-detail-summary__item">{{ $product->category ? 'Danh mục: '.$product->category->name : '' }}</div>
-                <div class="product-detail-summary__item">{{ $product->brand ? 'Xuất xứ: '.$product->brand->name : '' }}</div>
+                <div class="product-detail-summary__item">{{ $product->brand ? 'Nhãn hiệu: '.$product->brand->name : '' }}</div>
                 <div class="product-detail-summary__item">Tình trạng: còn hàng</div>
                 <div class="product-detail-summary__item"> {{ $product->small_description ? 'Mô tả ngắn: '.$product->small_description : '' }}</div>
             </div>
@@ -78,7 +78,7 @@
             <div class="swiper-wrapper product-row__wrapper">
                 @forelse($products as $item)
                     <div class="swiper-slide product-row__item">
-                        <span class="product-row__sale">- {{ Price::getSalePercent($item->original_price, $item->selling_price) }} %</span>
+                        <span class="product-row__sale">- {{ Number::getSalePricePercent($item->original_price, $item->selling_price) }} %</span>
                         <div class="product-row__content">
                             <div class="product-row__thumnail">
                                 <img class="product-row__img" src="{{ asset($item->productImages[0]->image) }}">

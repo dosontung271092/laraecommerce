@@ -86,6 +86,7 @@
 .product-grid__item{
     border: 1px solid var(--border-color);
     position: relative;
+    max-width: 247px;
 }
 
 .product-grid__sale{
@@ -121,9 +122,15 @@
     margin: 15px 0 0 0;
     font-size: 14px;
     height: 42px;
-    font-weight: 100;
     line-height: 20px;
     overflow: hidden;
+    color: var(--title-color);
+}
+
+.product-grid__brand{
+    height: 20px;
+    color: var(--text-color);
+    margin: 0;
 }
 
 .product-grid__price{
@@ -152,6 +159,8 @@
     border-radius: 5px;
     text-transform: uppercase;
     font-weight: 600;
+    text-decoration: none;
+    text-align: center;
 }
 
 .product-grid__viewbtn:hover{
