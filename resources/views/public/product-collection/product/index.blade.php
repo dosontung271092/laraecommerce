@@ -1,1 +1,1 @@
-<livewire:public.product.index :category="$category">
+<livewire:public.product.index :param="$param">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Taxonomy;
+use App\Models\Brand;
 
 class ProductController extends Controller
 {
@@ -16,32 +17,29 @@ class ProductController extends Controller
     }
 
     public function product( $category_slug ){
-        $category = Category::where('slug', $category_slug)->where('status', '0')->first();
-        
-        if( $category ){
-            return view('public.product-collection.product.index', compact('category'));
+        $param['category'] = Category::where('slug', $category_slug)->where('status', '0')->first();
+        if( empty( $param['category'] ) ){
+            return redirect()->back();
         }
 
-        return redirect()->back();
+        $param['brands'] = Brand::where('status', '0')->get();
+        return view('public.product-collection.product.index', compact('param'));
     }
 
     public function detail($category_slug, $product_slug){
         
-        $category = Category::where('slug', $category_slug)->where('status', '0')->first();
-        
-        if( $category ){
-            $product = $category->products()
-                                ->where('slug', $product_slug)
-                                ->where('status', '0')
-                                ->first();
-            
-            $products = Product::where('category_id', $category->id)->where('slug', '!=', $product_slug)->get();
-
-            if($product){
-                return view('public.product-collection.product.detail', compact('product', 'category', 'products'));
-            }
+        $param['category'] = Category::where('slug', $category_slug)->where('status', '0')->first();
+        if( empty( $param['category'] ) ){
+            return redirect()->back();
         }
 
-        return redirect()->back();
+        $param['product'] = $param['category']->products()->where('slug', $product_slug)->where('status', '0')->first();
+        if( empty( $param['product'] ) ){
+            return redirect()->back();
+        }
+
+        $param['products'] = Product::where('category_id', $param['category']->id)->where('slug', '!=', $product_slug)->get();
+
+        return view('public.product-collection.product.detail', compact('param'));
     }
 }

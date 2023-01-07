@@ -41,34 +41,12 @@
                      <h3 class="product-sidebar-item__title">Nhãn hiệu</h3>
                      <div class="product-sidebar-item__body">
                         <ul class="product-sidebar-brand-ul">
-                           <li class="product-sidebar-brand-li">
-                                 <input type="checkbox">
-                                 <label>Nhãn hiệu 1</label>
-                           </li>
-                           <li class="product-sidebar-brand-li">
-                                 <input type="checkbox">
-                                 <label>Nhãn hiệu 1</label>
-                           </li>
-                           <li class="product-sidebar-brand-li">
-                                 <input type="checkbox">
-                                 <label>Nhãn hiệu 1</label>
-                           </li>
-                           <li class="product-sidebar-brand-li">
-                                 <input type="checkbox">
-                                 <label>Nhãn hiệu 1</label>
-                           </li>
-                           <li class="product-sidebar-brand-li">
-                                 <input type="checkbox">
-                                 <label>Nhãn hiệu 1</label>
-                           </li>
-                           <li class="product-sidebar-brand-li">
-                                 <input type="checkbox">
-                                 <label>Nhãn hiệu 1</label>
-                           </li>
-                           <li class="product-sidebar-brand-li">
-                                 <input type="checkbox">
-                                 <label>Nhãn hiệu 1</label>
-                           </li>
+                           @foreach( $brands as $item )
+                              <li class="product-sidebar-brand-li">
+                                    <input type="checkbox">
+                                    <label>{{ $item->name }}</label>
+                              </li>
+                           @endforeach
                         </ul>
                      </div>
                </li>
