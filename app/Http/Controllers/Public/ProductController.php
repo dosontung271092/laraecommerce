@@ -22,7 +22,29 @@ class ProductController extends Controller
             return redirect()->back();
         }
 
+        $param['products'] = Product::where('category_id', $param['category']->id)->where('status', '0')->get();
+        if( empty( $param['products'] ) ){
+            return redirect()->back();
+        }
+
         $param['brands'] = Brand::where('status', '0')->get();
+
+        return view('public.product-collection.product.index', compact('param'));
+    }
+
+    public function grid(Request $request){
+        $param['category'] = Category::where('status', '0')->first();
+        if( empty( $param['category'] ) ){
+            return redirect()->back();
+        }
+
+        $param['products'] = Product::where('category_id', $param['category']->id)->where('status', '1')->get();
+        if( empty( $param['products'] ) ){
+            return redirect()->back();
+        }
+
+        $param['brands'] = Brand::where('status', '0')->get();
+
         return view('public.product-collection.product.index', compact('param'));
     }
 

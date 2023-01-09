@@ -18,10 +18,10 @@ class Detail extends Component
         }
     }
 
-    public function mount($category, $product, $products){
-        $this->category = $category;
-        $this->products = $products;
-        $this->product = $product;
+    public function mount($param){
+        $this->category = $param['category'];
+        $this->products = $param['products'];
+        $this->product  = $param['product'];
     }
 
     public function render()

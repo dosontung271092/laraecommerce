@@ -27,6 +27,7 @@ Route::controller(App\Http\Controllers\Public\HomeController::class)->group(func
 Route::controller(App\Http\Controllers\Public\ProductController::class)->group(function () {
     Route::get('/product-collection', 'category');
     Route::get('/product-collection/{category_slug}', 'product');
+    Route::post('/product-collection/{category_slug}', 'grid');
     Route::get('/product-collection/{category_slug}/{product_slug}', 'detail');
 });
 

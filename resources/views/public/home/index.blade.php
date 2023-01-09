@@ -132,7 +132,7 @@
             <div class="swiper-wrapper product-row__wrapper">
                 @forelse($products as $item)
                     <div class="swiper-slide product-row__item">
-                        <span class="product-row__sale">- {{ Price::getSalePercent($item->original_price, $item->selling_price) }} %</span>
+                        <span class="product-row__sale">- {{ Number::getSalePricePercent($item->original_price, $item->selling_price) }} %</span>
                         <div class="product-row__content">
                             <div class="product-row__thumnail">
                                 <img class="product-row__img" src="{{ asset($item->productImages[0]->image) }}">
