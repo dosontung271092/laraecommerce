@@ -19,7 +19,7 @@
    <div class="page-width">
          <button class="product-filter__btn">
             <img class="product-filter__icon" src="{{ asset('assets/img/icon/filter.png') }}" alt=""> 
-            <span>Filter</span>
+            <span>Lọc</span>
          </button>
    </div>
 </div>
@@ -91,4 +91,56 @@
    </div>
 </div> <!-- End page-width -->
 
+@endsection
+@section('modal')
+<!-- Modal product filter layout -->
+<div class="modal" id="modal__productfilter">
+    <div class="modal__overlay"></div>
+    <div class="modal__content--left">
+        <div class="modal__header">
+            <div class="modal__width">
+                <h3 class="modal__title">Lọc sản phẩm</h3>
+                <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
+            </div>
+        </div>
+        <div class="modal__body">
+            <div class="modal__width">
+               <form class="product__form" action="{{ url('/product/search') }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="category" value="{{ request()->category }}">
+                  <ul class="product-sidebar__ul">
+                     <li class="product-sidebar__li">
+                           <h3 class="product-sidebar-item__title">Giá</h3>
+                           <div class="product-sidebar-item__body">
+                              <label for="product-sidebar-price__input--from">Từ</label>
+                              <input type="number" class="product-sidebar-price__input product-sidebar-price__input--from" id="product-sidebar-price__input--from" name="search_price_from" value="{{ request()->search_price_from }}">
+                              <label for="product-sidebar-price__input--to">Đến</label>
+                              <input type="number" class="product-sidebar-price__input product-sidebar-price__input--to" id="product-sidebar-price__input--to" name="search_price_to" value="{{ request()->search_price_to }}">
+                           </div>
+                     </li>
+                     <li class="product-sidebar__li">
+                           <h3 class="product-sidebar-item__title">Nhãn hiệu</h3>
+                           <div class="product-sidebar-item__body">
+                              <ul class="product-sidebar-brand-ul">
+                              @foreach( $param['brands'] as $item )
+                                 <li class="product-sidebar-brand-li">
+                                       <input 
+                                          type="checkbox" 
+                                          name="search_brand[]" 
+                                          value="{{ $item->id }}" 
+                                          {{ !empty( request()->search_brand ) && in_array( $item->id,  request()->search_brand ) ? 'checked' : '' }}
+                                       >
+                                       <label>{{ $item->name }}</label>
+                                 </li>
+                              @endforeach
+                              </ul>
+                           </div>
+                     </li>
+                  </ul>
+                  <button class="product-sidebar__filterbtn">Lọc</button>
+               </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

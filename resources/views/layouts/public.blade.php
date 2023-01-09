@@ -30,6 +30,7 @@
         @yield('content')
         @include('public._partials.footer')
         @include('public._partials.modal')
+        @yield('modal')
     </div>
     <script src="{{ asset('/assets/js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('/assets/js/swiper-config.js') }}"></script>
