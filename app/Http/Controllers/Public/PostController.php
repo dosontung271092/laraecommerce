@@ -9,40 +9,23 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function taxonomy(){
 
-        $taxonomies = Taxonomy::where('status', '0')->get();
-        return view('public.post.taxonomy.index', compact('taxonomies'));
+
+    public function index( $taxonomy ){
+        $taxonomy = Taxonomy::where('slug', $taxonomy)->where('status', '0')->first();
+        $posts = Post::where('taxonomy_id', $taxonomy->id)->where('status', '0')->get();
+        return view('public.post.index', compact('posts', 'taxonomy'));
     }
 
-    public function post( $taxonomy_slug ){
-
-        $taxonomy = Taxonomy::where('slug', $taxonomy_slug)->where('status', '0')->first();
+    public function detail($taxonomy, $slug){
+        
+        $taxonomy = Taxonomy::where('slug', $taxonomy)->where('status', '0')->first();
         
         if( $taxonomy ){
-            return view('public.post.post.index', compact('taxonomy'));
+            $post = $taxonomy->posts()->where('slug', $slug)->where('status', '0')->first();
+            $posts = Post::where('taxonomy_id', $taxonomy->id)->where('slug', '!=', $slug)->get();
         }
 
-        return redirect()->back();
-    }
-
-    public function detail($taxonomy_slug, $post_slug){
-        
-        $taxonomy = Taxonomy::where('slug', $taxonomy_slug)->where('status', '0')->first();
-        
-        if( $taxonomy ){
-            $post = $taxonomy->posts()
-                                ->where('slug', $post_slug)
-                                ->where('status', '0')
-                                ->first();
-            
-            $posts = Post::where('taxonomy_id', $taxonomy->id)->where('slug', '!=', $post_slug)->get();
-
-            if($post){
-                return view('public.post.post.detail', compact('post', 'taxonomy', 'posts'));
-            }
-        }
-
-        return redirect()->back();
+        return view('public.post.detail', compact('post', 'taxonomy', 'posts'));
     }
 }

@@ -56,7 +56,7 @@
             <div class="modal__width">
                 <ul class="modal-body__ul">
                     <li class="modal-body__li"><a href="{{ url('/') }}" class="modal-body__a">Trang chủ</a></li>
-                    <li class="modal-body__li"><a href="{{ url('/product/') }}" class="modal-body__a">Sản phẩm</a></li>
+                    <li class="modal-body__li"><a href="{{ url('/category/') }}" class="modal-body__a">Sản phẩm</a></li>
                     <li class="modal-body__li"><a href="{{ url('/post/') }}" class="modal-body__a">Tin tức</a></li>
                     <li class="modal-body__li"><a href="{{ url('/post/gioi-thieu/ve-chung-toi') }}" class="modal-body__a">Giới thiệu</a></li>
                 </ul>

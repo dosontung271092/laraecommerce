@@ -1,4 +1,3 @@
-
 /* breadcrumb */
 .breadcrumb{
     height: 100px;
@@ -21,15 +20,20 @@
     }
 }
 
-
-
-
 .breadcumb__title--left{
     font-size: 15px;
     color: var(--text-color);
 }
 
 /* post__detail */
+.post__detail img, .post__detail{
+    max-width: 100%;
+}
+
+.post__title{
+    font-size: 25px;
+}
+
 .post__date{
     font-size: 12px;
 }

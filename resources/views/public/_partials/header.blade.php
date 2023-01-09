@@ -48,7 +48,7 @@
             <ul class="header-nav__ul header-nav__ul--menu header-nav__ul--lg">
                 <li class="header-nav__li"><a class="header-nav__a" href="{{ url('/') }}">Trang chủ</a></li>
                 <li class="header-nav__li"><a class="header-nav__a" href="{{ url('/category/') }}">Sản phẩm</a></li>
-                <li class="header-nav__li"><a class="header-nav__a" href="{{ url('/post/') }}">Tin tức</a></li>
+                <li class="header-nav__li"><a class="header-nav__a" href="{{ url('/taxonomy/') }}">Tin tức</a></li>
                 <li class="header-nav__li"><a class="header-nav__a" href="{{ url('/post/gioi-thieu/ve-chung-toi') }}">Giới thiệu</a></li>
             </ul>
             <ul class="header-nav__ul header-nav__ul--freeship">

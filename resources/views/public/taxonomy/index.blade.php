@@ -1,4 +1,3 @@
-
 @extends('layouts.public')
 
 @section('style')
@@ -17,20 +16,20 @@
     <div class="blog__grid">
         <div class="blog-grid__wrapper">
             @foreach($taxonomies as $taxonomy)
-            <div class="blog-grid__item">
-                <div class="blog-grid__content">
-                    <div class="blog-grid__thumnail">
-                        <img class="blog-grid__img" src="{{ asset($taxonomy->image) }}">
+                <div class="blog-grid__item">
+                    <div class="blog-grid__content">
+                        <div class="blog-grid__thumnail">
+                            <img class="blog-grid__img" src="{{ asset($taxonomy->image) }}">
+                        </div>
+                        <p class="blog-grid__date">{{ $taxonomy->created_at }}</p>
+                        <h3 class="blog-grid__title">{{ Str::words($taxonomy->name, 10, ' ...') }}</h3>
+                        <p class="blog-grid__description">{{ Str::words($taxonomy->description, 20, ' ...') }}</p>
+                        <a href="{{ url('/post/'.$taxonomy->slug) }}" class="blog-grid__viewlink">
+                            xem chi tiết
+                        </a>
                     </div>
-                    <p class="blog-grid__date">{{ $taxonomy->created_at }}</p>
-                    <h3 class="blog-grid__title">{{ Str::words($taxonomy->name, 10, ' ...') }}</h3>
-                    <p class="blog-grid__description">{{ Str::words($taxonomy->description, 20, ' ...') }}</p>
-                    <a href="{{ url('/post/'.$taxonomy->slug) }}" class="blog-grid__viewlink">
-                        xem chi tiết
-                    </a>
+                    
                 </div>
-                
-            </div>
             @endforeach
         </div>
     </div> <!-- End post -->
