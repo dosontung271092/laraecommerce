@@ -142,7 +142,7 @@
                                 <del class="product-row-price__origin">{{ number_format($item->original_price) }} đ</del>
                                 <span class="product-row-price__sale">{{ number_format($item->selling_price) }} đ</span>
                             </div>
-                            <a class="product-row__viewbtn" href="{{ url('/product-collection/'.$item->category->slug.'/'.$item->slug) }}">
+                            <a class="product-row__viewbtn" href="{{ url('/product/'.$item->category->slug.'/'.$item->slug) }}">
                                 xem chi tiết
                             </a>
                         </div>

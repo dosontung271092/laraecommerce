@@ -34,7 +34,7 @@
             <div class="modal__width">
                 <ul class="modal-body__ul">
                     @foreach($categories as $category)
-                        <li class="modal-body__li"><a href="{{ url('/product-collection/'.$category->slug) }}" class="modal-body__a">{{ $category->name }}</a></li>
+                        <li class="modal-body__li"><a href="{{ url('/product/'.$category->slug) }}" class="modal-body__a">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -56,9 +56,9 @@
             <div class="modal__width">
                 <ul class="modal-body__ul">
                     <li class="modal-body__li"><a href="{{ url('/') }}" class="modal-body__a">Trang chủ</a></li>
-                    <li class="modal-body__li"><a href="{{ url('/product-collection/') }}" class="modal-body__a">Sản phẩm</a></li>
-                    <li class="modal-body__li"><a href="{{ url('/post-collection/') }}" class="modal-body__a">Tin tức</a></li>
-                    <li class="modal-body__li"><a href="{{ url('/post-collection/gioi-thieu/ve-chung-toi') }}" class="modal-body__a">Giới thiệu</a></li>
+                    <li class="modal-body__li"><a href="{{ url('/product/') }}" class="modal-body__a">Sản phẩm</a></li>
+                    <li class="modal-body__li"><a href="{{ url('/post/') }}" class="modal-body__a">Tin tức</a></li>
+                    <li class="modal-body__li"><a href="{{ url('/post/gioi-thieu/ve-chung-toi') }}" class="modal-body__a">Giới thiệu</a></li>
                 </ul>
             </div>
         </div>

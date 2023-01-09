@@ -12,7 +12,7 @@ class PostController extends Controller
     public function taxonomy(){
 
         $taxonomies = Taxonomy::where('status', '0')->get();
-        return view('public.post-collection.taxonomy.index', compact('taxonomies'));
+        return view('public.post.taxonomy.index', compact('taxonomies'));
     }
 
     public function post( $taxonomy_slug ){
@@ -20,7 +20,7 @@ class PostController extends Controller
         $taxonomy = Taxonomy::where('slug', $taxonomy_slug)->where('status', '0')->first();
         
         if( $taxonomy ){
-            return view('public.post-collection.post.index', compact('taxonomy'));
+            return view('public.post.post.index', compact('taxonomy'));
         }
 
         return redirect()->back();
@@ -39,7 +39,7 @@ class PostController extends Controller
             $posts = Post::where('taxonomy_id', $taxonomy->id)->where('slug', '!=', $post_slug)->get();
 
             if($post){
-                return view('public.post-collection.post.detail', compact('post', 'taxonomy', 'posts'));
+                return view('public.post.post.detail', compact('post', 'taxonomy', 'posts'));
             }
         }
 

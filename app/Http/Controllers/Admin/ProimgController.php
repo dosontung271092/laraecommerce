@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ProductImage;
+use App\Models\Proimg;
 use Illuminate\Support\Facades\File;
 
-class ProductImageController extends Controller
+class ProimgController extends Controller
 {
     public function delete($id){
         $productImage = ProductImage::findOrFail($id);

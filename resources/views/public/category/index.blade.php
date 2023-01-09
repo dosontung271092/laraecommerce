@@ -16,7 +16,7 @@
     <div class="collection">
         <div class="collection__grid">
             @foreach($categories as $category)
-                <div class="collection-grid__item"><a class="collection-grid-a" href="{{ url('/product-collection/'.$category->slug) }}">{{ $category->name }}</a></div>
+                <div class="collection-grid__item"><a class="collection-grid-a" href="{{ url('/product/'.$category->slug) }}">{{ $category->name }}</a></div>
             @endforeach
         </div>
     </div>

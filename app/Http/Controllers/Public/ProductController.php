@@ -11,57 +11,60 @@ use App\Models\Brand;
 
 class ProductController extends Controller
 {
-    public function category(){
-        $categories = Category::where('status', '0')->get();
-        return view('public.product-collection.category.index', compact('categories'));
-    }
-
-    public function product( $category_slug ){
-        $param['category'] = Category::where('slug', $category_slug)->where('status', '0')->first();
-        if( empty( $param['category'] ) ){
-            return redirect()->back();
-        }
-
+    public function index( $category ){
+        $param['category'] = Category::where('slug', $category)->where('status', '0')->first();
         $param['products'] = Product::where('category_id', $param['category']->id)->where('status', '0')->get();
-        if( empty( $param['products'] ) ){
-            return redirect()->back();
-        }
-
         $param['brands'] = Brand::where('status', '0')->get();
-
-        return view('public.product-collection.product.index', compact('param'));
+        return view('public.product.index', compact('param'));
     }
 
-    public function grid(Request $request){
-        $param['category'] = Category::where('status', '0')->first();
-        if( empty( $param['category'] ) ){
-            return redirect()->back();
+    public function search(Request $request){
+        // Product
+        $pQuery = Product::where('status', '0');
+
+        if( !empty($request->keyword) ){
+            $pQuery->where('name','LIKE','%'.$request->keyword.'%');
         }
 
-        $param['products'] = Product::where('category_id', $param['category']->id)->where('status', '1')->get();
-        if( empty( $param['products'] ) ){
-            return redirect()->back();
+        if( !empty($request->category) ){
+            $param['category'] = Category::where('status', '0')->where('slug', $request->category)->first();
+            $pQuery->where('category_id', $param['category']->id);
         }
 
+        if( !empty($request->search_price_from) ){
+            $pQuery->where('selling_price', '>=', $request->search_price_from);
+        }
+
+        if( !empty($request->search_price_to) ){
+            $pQuery->where('selling_price', '<=', $request->search_price_to);
+        }
+
+        if( !empty($request->search_brand) ){
+            $pQuery->whereIn('brand_id', $request->search_brand);
+        }
+
+        $param['products'] = $pQuery->get();
+
+        // Brand
         $param['brands'] = Brand::where('status', '0')->get();
 
-        return view('public.product-collection.product.index', compact('param'));
+        return view('public.product.index', compact('param'));
     }
 
-    public function detail($category_slug, $product_slug){
+    public function detail($category, $slug){
         
-        $param['category'] = Category::where('slug', $category_slug)->where('status', '0')->first();
+        $param['category'] = Category::where('slug', $category)->where('status', '0')->first();
         if( empty( $param['category'] ) ){
             return redirect()->back();
         }
 
-        $param['product'] = $param['category']->products()->where('slug', $product_slug)->where('status', '0')->first();
+        $param['product'] = $param['category']->products()->where('slug', $slug)->where('status', '0')->first();
         if( empty( $param['product'] ) ){
             return redirect()->back();
         }
 
-        $param['products'] = Product::where('category_id', $param['category']->id)->where('slug', '!=', $product_slug)->get();
+        $param['products'] = Product::where('category_id', $param['category']->id)->where('slug', '!=', $slug)->get();
 
-        return view('public.product-collection.product.detail', compact('param'));
+        return view('public.product.detail', compact('param'));
     }
 }

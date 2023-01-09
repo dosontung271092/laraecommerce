@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,33 +14,33 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
-
+// Authentication
 Auth::routes();
 
-Route::controller(App\Http\Controllers\Public\HomeController::class)->group(function () {
-    Route::get('/', 'index');
-    Route::get('/search', 'search');
+// Public
+Route::prefix('/')->group(function (){
+    Route::controller(App\Http\Controllers\Public\HomeController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::get('/search', 'search');
+    });
+
+    Route::get('category', [App\Http\Controllers\Public\CategoryController::class, 'index']);
+
+    Route::prefix('product')->controller(App\Http\Controllers\Public\ProductController::class)->group(function (){
+        Route::get('/{category}', 'index');
+        Route::post('/search', 'search');
+        Route::get('/{category}/{slug}', 'detail');
+    });
+
+    Route::get('taxonomy', [App\Http\Controllers\Public\TaxonomyController::class, 'index']);
+
+    Route::prefix('post')->controller(App\Http\Controllers\Public\PostController::class)->group(function (){
+        Route::get('/{taxonomy}', 'index');
+        Route::get('/{taxonomy}/{slug}', 'detail');
+    });
 });
 
-Route::controller(App\Http\Controllers\Public\ProductController::class)->group(function () {
-    Route::get('/product-collection', 'category');
-    Route::get('/product-collection/{category_slug}', 'product');
-    Route::post('/product-collection/{category_slug}', 'grid');
-    Route::get('/product-collection/{category_slug}/{product_slug}', 'detail');
-});
-
-Route::controller(App\Http\Controllers\Public\PostController::class)->group(function () {
-    Route::get('/post-collection', 'taxonomy');
-    Route::get('/post-collection/{taxonomy_slug}', 'post');
-    Route::get('/post-collection/{taxonomy_slug}/{post_slug}', 'detail');
-});
-
-// User login
-Route::middleware(['auth'])->group(function (){
-    
-});
-
+// Admin
 Route::prefix('admin')->middleware(['auth', 'isAmin'])->group(function (){
     
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
@@ -85,8 +84,8 @@ Route::prefix('admin')->middleware(['auth', 'isAmin'])->group(function (){
         Route::get('/post/{id}/delete', 'delete');
     });
 
-    Route::controller(App\Http\Controllers\Admin\ProductImageController::class)->group(function () {
-        Route::get('/product-image/{id}', 'delete');
+    Route::controller(App\Http\Controllers\Admin\ProimgController::class)->group(function () {
+        Route::get('/proimg/{id}', 'delete');
     });
 
     Route::controller(App\Http\Controllers\Admin\ColorController::class)->group(function () {

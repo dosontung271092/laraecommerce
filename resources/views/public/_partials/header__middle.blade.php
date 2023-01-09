@@ -3,8 +3,9 @@
         <img src="{{ asset('assets/img/olympus-logo.png') }}" class="header-middle-logo__img" alt="logo">
     </a>
     <div class="header-middle__search">
-        <form action="{{ url('search') }}" method="GET" class="header-middle-search__form">
-            <input type="text" class="header-middle-search-form__input" placeholder="Tìm kiếm các sản phẩm ..." name="keyword" value="{{ !empty( $keyword ) ? $keyword : '' }}">
+        <form action="{{ url('/product/search') }}" method="POST" class="header-middle-search__form">
+            @csrf
+            <input type="text" class="header-middle-search-form__input" placeholder="Tìm kiếm các sản phẩm ..." name="keyword" value="{{ !empty( request()->keyword ) ? request()->keyword : '' }}">
             <button class="header-middle-search-form__submit">TÌM KIẾM</button>
         </form>
     </div>

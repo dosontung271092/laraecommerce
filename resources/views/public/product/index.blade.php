@@ -9,7 +9,8 @@
             Danh sách sản phẩm
          </h3>
          <h3 class="breadcumb__title breadcumb__title--left">
-            {{ $param['category']->name }}
+            {{ !empty( $param['category']->name ) ? $param['category']->name : '' }}
+            {!! !empty( request()->keyword ) ? 'Tìm bởi từ khóa <b>"'.request()->keyword.'"</b>' : '' !!}
          </h3>
    </div>
 </div>
@@ -27,16 +28,17 @@
    <div class="product">
          <div class="product__sidebar">
             <h3 class="product-sidebar__header">Lọc sản phẩm</h3>
-            <form class="product__form" action="{{ url('/product-collection/'.$param['category']->slug) }}" method="POST">
+            <form class="product__form" action="{{ url('/product/search') }}" method="POST">
                 @csrf
+                <input type="hidden" name="category" value="{{ request()->category }}">
                 <ul class="product-sidebar__ul">
                     <li class="product-sidebar__li">
                         <h3 class="product-sidebar-item__title">Giá</h3>
                         <div class="product-sidebar-item__body">
                             <label for="product-sidebar-price__input--from">Từ</label>
-                            <input type="text" class="product-sidebar-price__input product-sidebar-price__input--from" id="product-sidebar-price__input--from">
+                            <input type="number" class="product-sidebar-price__input product-sidebar-price__input--from" id="product-sidebar-price__input--from" name="search_price_from" value="{{ request()->search_price_from }}">
                             <label for="product-sidebar-price__input--to">Đến</label>
-                            <input type="text" class="product-sidebar-price__input product-sidebar-price__input--to" id="product-sidebar-price__input--to">
+                            <input type="number" class="product-sidebar-price__input product-sidebar-price__input--to" id="product-sidebar-price__input--to" name="search_price_to" value="{{ request()->search_price_to }}">
                         </div>
                     </li>
                     <li class="product-sidebar__li">
@@ -45,8 +47,13 @@
                             <ul class="product-sidebar-brand-ul">
                             @foreach( $param['brands'] as $item )
                                 <li class="product-sidebar-brand-li">
-                                        <input type="checkbox" wire:model="filterBrand" value="{{ $item->id }}">
-                                        <label>{{ $item->name }}</label>
+                                    <input 
+                                       type="checkbox" 
+                                       name="search_brand[]" 
+                                       value="{{ $item->id }}" 
+                                       {{ !empty( request()->search_brand ) && in_array( $item->id,  request()->search_brand ) ? 'checked' : '' }}
+                                    >
+                                    <label>{{ $item->name }}</label>
                                 </li>
                             @endforeach
                             </ul>
@@ -72,7 +79,7 @@
                            <del class="product-grid-price__origin">{{ number_format($item->original_price) }} đ</del>
                            <span class="product-grid-price__sale">{{ number_format($item->selling_price) }} đ</span>
                         </div>
-                        <a href="{{ url('/product-collection/'.$param['category']->slug.'/'.$item->slug) }}" class="product-grid__viewbtn">
+                        <a href="{{ url('/product/'.$item->category->slug.'/'.$item->slug) }}" class="product-grid__viewbtn">
                            xem chi tiết
                         </a>
                   </div>

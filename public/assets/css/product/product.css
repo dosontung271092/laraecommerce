@@ -68,8 +68,13 @@
     background-color: var(--yellow-color);
 }
 
+.product-sidebar__filterbtn:hover{
+    background-color: var(--yellow-hover-color);
+    cursor: pointer;
+}
+
 .product__grid{
-    width: 100%;
+    max-width: 100%;
     height: max-content;
     display: grid;
     gap: 10px;
@@ -191,7 +196,9 @@
 }
 
 .product-sidebar-price__input{
-    width: 50px;
+    width: 80px;
+    height: 25px;
+    font-size: 12px;
 }
 
 .product-sidebar-brand-ul{

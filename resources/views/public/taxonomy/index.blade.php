@@ -25,7 +25,7 @@
                     <p class="blog-grid__date">{{ $taxonomy->created_at }}</p>
                     <h3 class="blog-grid__title">{{ Str::words($taxonomy->name, 10, ' ...') }}</h3>
                     <p class="blog-grid__description">{{ Str::words($taxonomy->description, 20, ' ...') }}</p>
-                    <a href="{{ url('/post-collection/'.$taxonomy->slug) }}" class="blog-grid__viewlink">
+                    <a href="{{ url('/post/'.$taxonomy->slug) }}" class="blog-grid__viewlink">
                         xem chi tiết
                     </a>
                 </div>
