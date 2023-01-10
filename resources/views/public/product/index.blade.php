@@ -9,7 +9,7 @@
             Danh sách sản phẩm
          </h3>
          <h3 class="breadcumb__title breadcumb__title--left">
-            {{ !empty( $param['category']->name ) ? $param['category']->name : '' }}
+            {{ !empty( $category->name ) ? $category->name : '' }}
             {!! !empty( request()->keyword ) ? 'Tìm bởi từ khóa <b>"'.request()->keyword.'"</b>' : '' !!}
          </h3>
    </div>
@@ -45,7 +45,7 @@
                         <h3 class="product-sidebar-item__title">Nhãn hiệu</h3>
                         <div class="product-sidebar-item__body">
                             <ul class="product-sidebar-brand-ul">
-                            @foreach( $param['brands'] as $item )
+                            @foreach( $brands as $item )
                                 <li class="product-sidebar-brand-li">
                                     <input 
                                        type="checkbox" 
@@ -66,7 +66,7 @@
 
          <!-- End product__sidebar -->
          <div class="product__grid" id="product__grid">
-            @forelse( $param['products'] as $item )
+            @forelse( $products as $item )
                <div class="product-grid__item">
                   <span class="product-grid__sale">- {{ Number::getSalePricePercent($item->original_price, $item->selling_price) }} %</span>
                   <div class="product-grid__content">
@@ -122,7 +122,7 @@
                            <h3 class="product-sidebar-item__title">Nhãn hiệu</h3>
                            <div class="product-sidebar-item__body">
                               <ul class="product-sidebar-brand-ul">
-                              @foreach( $param['brands'] as $item )
+                              @foreach( $brands as $item )
                                  <li class="product-sidebar-brand-li">
                                        <input 
                                           type="checkbox" 

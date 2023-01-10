@@ -33,7 +33,7 @@
         <div class="modal__body">
             <div class="modal__width">
                 <ul class="modal-body__ul">
-                    @foreach($categories as $category)
+                    @foreach($PROVIDER_CATEGORY as $category)
                         <li class="modal-body__li"><a href="{{ url('/product/'.$category->slug) }}" class="modal-body__a">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
@@ -57,7 +57,7 @@
                 <ul class="modal-body__ul">
                     <li class="modal-body__li"><a href="{{ url('/') }}" class="modal-body__a">Trang chủ</a></li>
                     <li class="modal-body__li"><a href="{{ url('/category/') }}" class="modal-body__a">Sản phẩm</a></li>
-                    <li class="modal-body__li"><a href="{{ url('/post/') }}" class="modal-body__a">Tin tức</a></li>
+                    <li class="modal-body__li"><a href="{{ url('/taxonomy/') }}" class="modal-body__a">Tin tức</a></li>
                     <li class="modal-body__li"><a href="{{ url('/post/gioi-thieu/ve-chung-toi') }}" class="modal-body__a">Giới thiệu</a></li>
                 </ul>
             </div>
@@ -75,40 +75,24 @@
                 <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
             </div>
         </div>
-
         <div class="modal__body">
             <div class="modal__width">
                 <ul class="modal-body__ul">
-                    <li class="modal-body__li">
-                        <a href="" class="modal-body__a modal-body__a--cart">
-                            <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
-                            <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
-                            <div class="modal-body-cart__content">
-                                <h3 class="modal-body-cart-content__title">Thực phẩm dành cho người già</h3>
-                                <p class="modal-body-cart-content__price">Giá: 240.000 đ</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="modal-body__li">
-                        <a href="" class="modal-body__a modal-body__a--cart">
-                            <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
-                            <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
-                            <div class="modal-body-cart__content">
-                                <h3 class="modal-body-cart-content__title">Thực phẩm dành cho người trung tuổi</h3>
-                                <p class="modal-body-cart-content__price">Giá: 240.000 đ</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="modal-body__li">
-                        <a href="" class="modal-body__a modal-body__a--cart">
-                            <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
-                            <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
-                            <div class="modal-body-cart__content">
-                                <h3 class="modal-body-cart-content__title">Thực phẩm dành cho trẻ em</h3>
-                                <p class="modal-body-cart-content__price">Giá: 240.000 đ</p>
-                            </div>
-                        </a>
-                    </li>
+
+                    @if( !empty(Session::get('SESSION_CART')) )
+                        @foreach(Session::get('SESSION_CART') as $cart)
+                            <li class="modal-body__li">
+                                <a href="" class="modal-body__a modal-body__a--cart">
+                                    <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
+                                    <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
+                                    <div class="modal-body-cart__content">
+                                        <h3 class="modal-body-cart-content__title">{{ $cart["product_name"] }}</h3>
+                                        <p class="modal-body-cart-content__price">Giá: {{ $cart["product_price"] }} đ</p>
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
 
                 </ul>
             </div>
@@ -126,10 +110,10 @@
                         <span class="modal-footer-cart__value">200.000 đ</span>
                     </div>
                 </div>
-                <div class="modal-footer-cart__bottom">
+                <!-- <div class="modal-footer-cart__bottom">
                     <button class="modal-footer-cart-bottom__btn modal-footer-cart-bottom__btn--view">Xem giỏ hàng</button>
                     <button class="modal-footer-cart-bottom__btn modal-footer-cart-bottom__btn--checkout">Thanh toán</button>
-                </div>
+                </div> -->
             </div>
         </div>
 

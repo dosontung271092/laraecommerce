@@ -21,7 +21,7 @@ Auth::routes();
 Route::prefix('/')->group(function (){
     Route::controller(App\Http\Controllers\Public\HomeController::class)->group(function () {
         Route::get('/', 'index');
-        Route::get('/search', 'search');
+        Route::get('/map', 'map');
     });
 
     Route::get('category', [App\Http\Controllers\Public\CategoryController::class, 'index']);
@@ -38,6 +38,11 @@ Route::prefix('/')->group(function (){
         Route::get('/{taxonomy}', 'index');
         Route::get('/{taxonomy}/{slug}', 'detail');
     });
+
+    Route::prefix('cart')->controller(App\Http\Controllers\Public\CartController::class)->group(function (){
+        Route::post('/store', 'store');
+    });
+
 });
 
 // Admin

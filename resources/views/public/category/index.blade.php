@@ -1,5 +1,4 @@
 @extends('layouts.public')
-
 @section('style')
 <link rel="stylesheet" href="/assets/css/collection.css">
 @endsection

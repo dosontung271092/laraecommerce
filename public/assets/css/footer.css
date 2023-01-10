@@ -87,6 +87,12 @@ footer{
     line-height: 20px;
 }
 
+.footer-above-ul__a{
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .footer-above__form{
     display: flex;
     border: 1px solid var(--border-color);
@@ -121,7 +127,7 @@ footer{
 }
 
 .footer-below__copyright{
-    font-size: 11px;
+    font-size: 10px;
     padding-right: 30px;
 }
 

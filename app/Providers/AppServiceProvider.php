@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
+use App\Models\Cart;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $categories = Category::where('status', '0')->get();
-        View::share('categories', $categories);
+        $category = Category::where('status', '0')->get();
+        View::share('PROVIDER_CATEGORY', $category);
     }
 }

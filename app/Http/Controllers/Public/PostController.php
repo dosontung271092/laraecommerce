@@ -18,14 +18,9 @@ class PostController extends Controller
     }
 
     public function detail($taxonomy, $slug){
-        
         $taxonomy = Taxonomy::where('slug', $taxonomy)->where('status', '0')->first();
-        
-        if( $taxonomy ){
-            $post = $taxonomy->posts()->where('slug', $slug)->where('status', '0')->first();
-            $posts = Post::where('taxonomy_id', $taxonomy->id)->where('slug', '!=', $slug)->get();
-        }
-
+        $post = $taxonomy->posts()->where('slug', $slug)->where('status', '0')->first();
+        $posts = Post::where('taxonomy_id', $taxonomy->id)->where('slug', '!=', $slug)->get();
         return view('public.post.detail', compact('post', 'taxonomy', 'posts'));
     }
 }

@@ -12,10 +12,10 @@ use App\Models\Brand;
 class ProductController extends Controller
 {
     public function index( $category ){
-        $param['category'] = Category::where('slug', $category)->where('status', '0')->first();
-        $param['products'] = Product::where('category_id', $param['category']->id)->where('status', '0')->get();
-        $param['brands'] = Brand::where('status', '0')->get();
-        return view('public.product.index', compact('param'));
+        $category = Category::where('slug', $category)->where('status', '0')->first();
+        $products = Product::where('category_id', $category->id)->where('status', '0')->get();
+        $brands   = Brand::where('status', '0')->get();
+        return view('public.product.index', compact('category', 'products', 'brands'));
     }
 
     public function search(Request $request){
@@ -27,8 +27,8 @@ class ProductController extends Controller
         }
 
         if( !empty($request->category) ){
-            $param['category'] = Category::where('status', '0')->where('slug', $request->category)->first();
-            $pQuery->where('category_id', $param['category']->id);
+            $category = Category::where('status', '0')->where('slug', $request->category)->first();
+            $pQuery->where('category_id', $category->id);
         }
 
         if( !empty($request->search_price_from) ){
@@ -43,28 +43,28 @@ class ProductController extends Controller
             $pQuery->whereIn('brand_id', $request->search_brand);
         }
 
-        $param['products'] = $pQuery->get();
+        $products = $pQuery->get();
 
         // Brand
-        $param['brands'] = Brand::where('status', '0')->get();
+        $brands = Brand::where('status', '0')->get();
 
-        return view('public.product.index', compact('param'));
+        return view('public.product.index', compact('products', 'brands'));
     }
 
     public function detail($category, $slug){
         
-        $param['category'] = Category::where('slug', $category)->where('status', '0')->first();
-        if( empty( $param['category'] ) ){
+        $category = Category::where('slug', $category)->where('status', '0')->first();
+        if( empty( $category ) ){
             return redirect()->back();
         }
 
-        $param['product'] = $param['category']->products()->where('slug', $slug)->where('status', '0')->first();
-        if( empty( $param['product'] ) ){
+        $product = $category->products()->where('slug', $slug)->where('status', '0')->first();
+        if( empty( $product ) ){
             return redirect()->back();
         }
 
-        $param['products'] = Product::where('category_id', $param['category']->id)->where('slug', '!=', $slug)->get();
+        $products = Product::where('category_id', $category->id)->where('slug', '!=', $slug)->get();
 
-        return view('public.product.detail', compact('param'));
+        return view('public.product.detail', compact('category', 'product', 'products'));
     }
 }

@@ -26,8 +26,14 @@
 }
 
 /* post__detail */
-.post__detail img, .post__detail{
+.post__detail{
     max-width: 100%;
+    font-size: 14px;
+}
+
+.post__detail img{
+    max-width: 100%;
+    text-align: center;
 }
 
 .post__title{

@@ -14,8 +14,8 @@ class Index extends Component
     protected $queryString = ['search'];
 
     public function mount($param){
-        $this->category = $param['category'];
-        $this->brands   = $param['brands'];
+        $this->category = $category;
+        $this->brands   = $brands;
     }
 
     public function render()
