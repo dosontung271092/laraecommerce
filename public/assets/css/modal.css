@@ -164,9 +164,19 @@
 
 .modal-body-cart__thumnail{
     height: 60px;
+    width: 60px;
+    overflow: hidden;
     border-radius: 5px;
     border: 1px solid var(--border-color);
     margin: 0 10px;
+    position: relative;
+}
+
+.modal-body-cart-thumnail__img{
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
 }
 
 .modal-body-cart__content{

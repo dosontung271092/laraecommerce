@@ -18,7 +18,9 @@
         </div>
         <div class="header-middle-right__item header-middle-right__item--cart">
             <img class="header-middle-right__icon header-middle-right__icon--cart" src="{{ asset('assets/img/icon/cart.png') }}">
-            <span class="header-middle-right-cart__notification">3</span>
+            @if( !empty(Session::get('SESSION_CART')) )
+                <span class="header-middle-right-cart__notification">{{ count( Session::get('SESSION_CART') ) }}</span>
+            @endif
         </div>
         <div class="header-middle-right__item header-middle-right__item--sm">
             <img class="header-middle-right__icon header-middle-right__icon--menu" src="{{ asset('assets/img/icon/bar.png') }}">

@@ -58,8 +58,9 @@
                 <form action="{{ url('/cart/store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <input type="hidden" name="product_name" value="{{ $product->product_name }}">
-                    <input type="hidden" name="product_price" value="{{ $product->product_price }}">
+                    <input type="hidden" name="product_name" value="{{ $product->name }}">
+                    <input type="hidden" name="product_price" value="{{ $product->selling_price }}">
+                    <input type="hidden" name="product_img" value="{{ $product->productImages[0]->image }}">
                     <button class="product-detail-right-bottom__btn product-detail-right-bottom__btn--view">Thêm vào giỏ hàng</button>
                 </form>
             </div>

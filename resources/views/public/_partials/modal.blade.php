@@ -67,55 +67,62 @@
 
 <!-- Modal cart layout -->
 <div class="modal" id="modal__cart">
-    <div class="modal__overlay"></div>
-    <div class="modal__content--right">
-        <div class="modal__header">
-            <div class="modal__width">
-                <h3 class="modal__title">Giỏ hàng của bạn</h3>
-                <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
+   <div class="modal__overlay"></div>
+   <div class="modal__content--right">
+      <div class="modal__header">
+         <div class="modal__width">
+            <h3 class="modal__title">Giỏ hàng của bạn</h3>
+            <img class="modal__clsicon" src="{{ asset('assets/img/icon/close.png') }}">
+         </div>
+      </div>
+      @if( !empty(Session::get('SESSION_CART')) )
+      <div class="modal__body">
+         <div class="modal__width">
+            <ul class="modal-body__ul">
+               @foreach(Session::get('SESSION_CART') as $cart)
+               <li class="modal-body__li">
+                  <a class="modal-body__a modal-body__a--cart">
+                     <div class="modal-body-cart__thumnail">
+                        <img class="modal-body-cart-thumnail__img" src="{{ asset( $cart['product_img'] ) }}" alt="{{ $cart['product_name'] }}">
+                     </div>
+                     <div class="modal-body-cart__content">
+                        <h3 class="modal-body-cart-content__title">{{ $cart["product_name"] }}</h3>
+                        <p class="modal-body-cart-content__price">Giá: {{ number_format($cart["product_price"]) }} đ</p>
+                     </div>
+                  </a>
+               </li>
+               @endforeach
+            </ul>
+         </div>
+      </div>
+      <div class="modal__footer">
+         <div class="modal-footer__cart modal__width">
+            <div class="modal-footer-cart__top">
+               <div class="modal-footer-cart-top__total">
+                  <label class="modal-footer-cart__label">Số lượng:</label>
+                  <span class="modal-footer-cart__value">{{ count( Session::get('SESSION_CART') ) }}</span>
+               </div>
+               <div class="modal-footer-cart-top__price">
+                  <label class="modal-footer-cart__label">Giá:</label>
+                  <span class="modal-footer-cart__value">{{ number_format( array_sum( array_column( Session::get('SESSION_CART'), 'product_price' ) ) ) }} đ</span>
+               </div>
             </div>
-        </div>
-        <div class="modal__body">
-            <div class="modal__width">
-                <ul class="modal-body__ul">
-
-                    @if( !empty(Session::get('SESSION_CART')) )
-                        @foreach(Session::get('SESSION_CART') as $cart)
-                            <li class="modal-body__li">
-                                <a href="" class="modal-body__a modal-body__a--cart">
-                                    <img class="modal-body-cart__deleteicon" title="Xoá sản phẩm" src="/assets/img/icon/delete.png" alt="">
-                                    <img class="modal-body-cart__thumnail" src="{{ asset('assets/img/product/product01.jpg') }}" alt="">
-                                    <div class="modal-body-cart__content">
-                                        <h3 class="modal-body-cart-content__title">{{ $cart["product_name"] }}</h3>
-                                        <p class="modal-body-cart-content__price">Giá: {{ $cart["product_price"] }} đ</p>
-                                    </div>
-                                </a>
-                            </li>
-                        @endforeach
-                    @endif
-
-                </ul>
-            </div>
-        </div>
-
-        <div class="modal__footer">
-            <div class="modal-footer__cart modal__width">
-                <div class="modal-footer-cart__top">
-                    <div class="modal-footer-cart-top__total">
-                        <label class="modal-footer-cart__label">Số lượng:</label>
-                        <span class="modal-footer-cart__value">3</span>
-                    </div>
-                    <div class="modal-footer-cart-top__price">
-                        <label class="modal-footer-cart__label">Giá:</label>
-                        <span class="modal-footer-cart__value">200.000 đ</span>
-                    </div>
+         </div>
+      </div>
+      @else
+        @auth
+            <div class="modal__body">
+                <div class="modal__width">
+                    <h3>Giỏ hàng trống</h3>
                 </div>
-                <!-- <div class="modal-footer-cart__bottom">
-                    <button class="modal-footer-cart-bottom__btn modal-footer-cart-bottom__btn--view">Xem giỏ hàng</button>
-                    <button class="modal-footer-cart-bottom__btn modal-footer-cart-bottom__btn--checkout">Thanh toán</button>
-                </div> -->
             </div>
-        </div>
-
-    </div>
+        @else
+            <div class="modal__body">
+                <div class="modal__width">
+                    <h3>Bạn hãy đăng nhập để sử dụng tính năng giỏ hàng</h3>
+                </div>
+            </div>
+        @endauth
+      @endif
+   </div>
 </div>
