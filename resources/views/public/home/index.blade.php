@@ -25,7 +25,7 @@
 
         <div class="slider__next">
             <div class="slider-next__item">
-                <img class="slider-next__img" src="./assets/img/slide/slide01.jpg">
+                <img class="slider-next__img" src="./assets/img/slide/next-slide-1.png">
                 <div class="slider-next__content">
                     <p class="slider-next__sale">Sale 50%</p>
                     <h3 class="slider-next__title">
@@ -37,11 +37,11 @@
                 </div>
             </div>
             <div class="slider-next__item">
-                <img class="slider-next__img" src="./assets/img/slide/slide01.jpg">
+                <img class="slider-next__img" src="./assets/img/slide/next-slide-2.png">
                 <div class="slider-next__content">
                     <p class="slider-next__sale">Sale 50%</p>
                     <h3 class="slider-next__title">
-                        Chăm sóc da tự nhiên
+                        Bổ sung dưỡng chất
                     </h3>
                     <button class="slider-next__viewbtn">
                         xem chi tiết
@@ -58,57 +58,42 @@
                 <div class="swiper-slide brand-row__item">
                     <div class="brand-row__content">
                         <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/slide/slide01.jpg">
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="swiper-slide brand-row__item">
-                    <div class="brand-row__content">
-                        <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                            <img class="brand-row__img" src="./assets/img/brand/brand_01.png">
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide brand-row__item">
                     <div class="brand-row__content">
                         <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                            <img class="brand-row__img" src="./assets/img/brand/brand_02.png">
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide brand-row__item">
                     <div class="brand-row__content">
                         <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                            <img class="brand-row__img" src="./assets/img/brand/brand_03.png">
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide brand-row__item">
                     <div class="brand-row__content">
                         <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                            <img class="brand-row__img" src="./assets/img/brand/brand_04.png">
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide brand-row__item">
                     <div class="brand-row__content">
                         <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                            <img class="brand-row__img" src="./assets/img/brand/brand_05.png">
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide brand-row__item">
                     <div class="brand-row__content">
                         <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide brand-row__item">
-                    <div class="brand-row__content">
-                        <div class="brand-row__thumnail">
-                            <img class="brand-row__img" src="./assets/img/product/product01.jpg">
+                            <img class="brand-row__img" src="./assets/img/brand/brand_06.png">
                         </div>
                     </div>
                 </div>

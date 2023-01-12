@@ -26,8 +26,9 @@ class CartController extends Controller
             $SESSION_CART = !empty(Session::get('SESSION_CART')) ? Session::get('SESSION_CART') : [];
             array_push($SESSION_CART, $newProduct);
             Session::put('SESSION_CART', $SESSION_CART);
+            return redirect()->back();
         }
         
-        return redirect()->back();
+        return redirect('/login');
     }
 }
