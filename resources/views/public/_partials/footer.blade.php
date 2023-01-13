@@ -32,13 +32,11 @@
                     </ul>
                 </div>
                 <div class="footer-above__col">
-                    <h3 class="footer-above__title">Thông tin</h3>
+                    <h3 class="footer-above__title">Hỗ trợ</h3>
                     <ul class="footer-above__ul">
                         <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/tin-tuc-chung/cau-hoi-thuong-gap') }}" >Câu hỏi thường gặp</a></li>
                         <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/tin-tuc-chung/giao-hang') }}" >Giao hàng</a></li>
                         <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/tin-tuc-chung/thanh-toan') }}" >Thanh toán</a></li>
-                        <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/tin-tuc-chung/chinh-sach-bao-mat') }}" >Chính sách bảo mật</a></li>
-                        <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/tin-tuc-chung/ban-quyen-thuong-hieu') }}" >Bản quyền thương hiệu</a></li>
                     </ul>
                 </div>
                 <div class="footer-above__col">
@@ -50,16 +48,11 @@
                         <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/gioi-thieu/phan-phoi') }}" >Phân phối</a></li>
                     </ul>
                 </div>
-                <div class="footer-above__col footer-above__col--2">
-                    <h3 class="footer-above__title">Gửi email cho chúng tôi</h3>
+                <div class="footer-above__col">
+                    <h3 class="footer-above__title">Điều khoản</h3>
                     <ul class="footer-above__ul">
-                        <li class="footer-above-ul__li footer-above-ul__li--padding">Đăng ký để nhận những tin tức mới nhất và phần trăm giảm giá sản phẩm.</li>
-                        <li class="footer-above-ul__li">
-                            <form class="footer-above__form" action="">
-                                <input type="text" class="footer-above-input__email" placeholder="Nhập email ...">
-                                <input type="submit" class="footer-above-input__submit" value="Đăng ký">
-                            </form>
-                        </li>
+                        <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/tin-tuc-chung/chinh-sach-bao-mat') }}" >Chính sách bảo mật</a></li>
+                        <li class="footer-above-ul__li"><a class="footer-above-ul__a" href="{{ url('/post/tin-tuc-chung/ban-quyen-thuong-hieu') }}" >Bản quyền thương hiệu</a></li>
                     </ul>
                 </div>
             </div>

@@ -20,9 +20,16 @@
     position: absolute;
     left:20px;
     top: 50%;
-    width: 40%;
+    width: 30%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+@media (min-width: 768px) {
+    .slider-main__content{
+        width: 40%;
+    }
+
 }
 
 .slider-main__sale{
@@ -146,9 +153,11 @@
 }
 
 .slider-next__item{
+    border: 1px solid var(--border-color);
     position: relative;
     margin-top: 15px;
     width: 100%;
+    border-radius: 5px;
 }
 
 .slider-next__img {

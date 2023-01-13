@@ -140,44 +140,6 @@
         </div>
     </section> <!-- End product -->
 
-    <section class="banner__section">
-        <div class="banner__item">
-            <img class="banner__img" src="./assets/img/slide/slide01.jpg">
-            <div class="banner__content">
-                <p class="banner__sale">Sale 50%</p>
-                <h3 class="banner__title">
-                    Chăm sóc da tự nhiên
-                </h3>
-                <button class="banner__viewbtn">
-                    xem chi tiết
-                </button>
-            </div>
-        </div>
-        <div class="banner__item">
-            <img class="banner__img" src="./assets/img/slide/slide01.jpg">
-            <div class="banner__content">
-                <p class="banner__sale">Sale 50%</p>
-                <h3 class="banner__title">
-                    Chăm sóc da tự nhiên
-                </h3>
-                <button class="banner__viewbtn">
-                    xem chi tiết
-                </button>
-            </div>
-        </div>
-        <div class="banner__item">
-            <img class="banner__img" src="./assets/img/slide/slide01.jpg">
-            <div class="banner__content">
-                <p class="banner__sale">Sale 50%</p>
-                <h3 class="banner__title">
-                    Chăm sóc da tự nhiên
-                </h3>
-                <button class="banner__viewbtn">
-                    xem chi tiết
-                </button>
-            </div>
-        </div>
-    </section><!-- Best product sale -->
 
     <section class="post__section">
         <div class="post__latest swiper">
